@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Nautical Mile — Ipswich Waterfront</title>
+  <meta name="description" content="The Nautical Mile — Ipswich waterfront dining. Anchored in flavour, where the tide meets the table.">
+  <style>
+    :root{
+      --navy: #032c45;
+      --seafoam: #9fd6c9;
+      --gold: #cfa14b;
+      --ivory: #f5f2ea;
+      --muted: #6b7a85;
+      --maxWidth: 1100px;
+      --radius: 10px;
+      font-family: "Segoe UI", Roboto, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      color: var(--navy);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--ivory), #ffffff);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    header{
+      background: linear-gradient(90deg, rgba(3,44,69,0.95), rgba(9,58,92,0.95));
+      color: #fff;
+      padding: 18px 16px;
+      position: sticky;
+      top:0;
+      z-index: 20;
+      box-shadow: 0 4px 18px rgba(3,44,69,0.15);
+    }
+    .container{
+      width:95%;
+      max-width: var(--maxWidth);
+      margin: 0 auto;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .brand img{height:48px; width:auto; display:block; border-radius:6px; background:#fff; padding:4px;}
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      letter-spacing:1px;
+      font-weight:700;
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:18px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      color: #fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      opacity:0.95;
+    }
+    .hero{
+      padding: 48px 0;
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .hero-left{
+      flex:1;
+    }
+    .eyebrow{ color: var(--gold); font-weight:700; letter-spacing:1px; margin-bottom:12px;}
+    .hero h2{ margin:0 0 16px 0; font-size:34px; color:var(--navy);}
+    .lead{color:var(--muted); max-width:62ch; margin-bottom:22px;}
+    .cta{
+      display:inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding:12px 18px;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow: 0 6px 12px rgba(207,161,75,0.18);
+    }
+    .hero-right{
+      width:300px;
+      text-align:center;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(250,250,250,0.9));
+      padding:18px;
+      box-shadow: 0 10px 30px rgba(3,44,69,0.06);
+    }
+    .logo-placeholder{height:160px; display:flex; align-items:center; justify-content:center}
+    .logo-placeholder img{max-width:100%; height:auto; display:block}
+
+    section{ padding:36px 0; border-bottom: 1px solid rgba(3,44,69,0.04); }
+    h3{ color:var(--navy); margin-top:0; }
+    .grid{
+      display:grid;
+      gap:18px;
+    }
+
+    /* About / Crew */
+    .about-grid{ grid-template-columns: 1fr 360px; display:grid; gap:24px; align-items:start; }
+
+    /* Menu */
+    .menu-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); display:grid; gap:16px; }
+    .menu-card{ background: #fff; padding:16px; border-radius:10px; box-shadow: 0 8px 18px rgba(3,44,69,0.04); }
+    .menu-card h4{ margin:0 0 8px 0; color:var(--navy); }
+    .dish{ display:flex; justify-content:space-between; color:var(--muted); padding:6px 0; border-bottom:1px dashed rgba(3,44,69,0.03); }
+
+    /* Gallery */
+    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
+    .gallery img{ width:100%; height:140px; object-fit:cover; border-radius:8px; display:block;}
+
+    /* Reservations and contact */
+    .form{
+      background: #fff;
+      padding:18px;
+      border-radius:10px;
+      max-width:540px;
+      box-shadow: 0 10px 30px rgba(3,44,69,0.04);
+    }
+    label{ display:block; margin:8px 0 6px; font-weight:600; font-size:13px; color:var(--navy);}
+    input, textarea, select{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e6e6; font-size:14px; }
+    button[type="submit"]{ margin-top:12px; background:var(--navy); color:#fff; border:none; padding:12px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+
+    .footer{
+      background: linear-gradient(90deg, rgba(3,44,69,0.98), rgba(9,58,92,0.98));
+      color:#fff;
+      padding:20px 0;
+      margin-top:8px;
+    }
+    .small{ font-size:13px; color:rgba(255,255,255,0.85); }
+    @media (max-width:880px){
+      .about-grid{ grid-template-columns: 1fr; }
+      nav ul{ display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <div class="brand">
+        <!-- Replace these placeholders with your logo files -->
+        <img src="static/img/Logonowords-removebg.png" alt="The Nautical Mile logo icon" />
+        <div>
+          <h1>The Nautical Mile</h1>
+          <div class="small">Ipswich Waterfront</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reservations">Reservations</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <div class="eyebrow">Anchored in Flavour</div>
+        <h2 id="hero-heading">Where the Tide Meets the Table</h2>
+        <p class="lead">
+          Step into <strong>The Nautical Mile</strong>, Ipswich’s newest waterfront dining destination.
+          Inspired by the sea and stocked with the freshest local produce, our menu and atmosphere invite you
+          to relax, explore, and celebrate beside the water.
+        </p>
+        <a class="cta" href="#reservations">Book Your Berth</a>
+      </div>
+
+      <aside class="hero-right" aria-labelledby="intro-logo">
+        
+        <div class="logo-placeholder" aria-hidden="true">
+          <!-- logo.png should be the full logo with the anchor & rope -->
+          <img src="static/img/logo.png" alt="The Nautical Mile logo (anchor and rope emblem)" />
+        </div>
+        <div class="small" style="margin-top:10px;color:var(--muted);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="about-grid container">
+        <div>
+          <h3 id="about-heading">Our Voyage</h3>
+          <p>
+            The Nautical Mile was founded with one simple idea: celebrate Ipswich’s maritime roots while offering a modern,
+            welcoming dining experience by the water. From our anchor-inspired emblem to the sea-salted flavours on the plate,
+            every detail nods to the town’s proud coastal story.
+          </p>
+
+          <h4 style="margin-top:18px;">The Crew Behind the Mile</h4>
+          <p>
+            Our team — chefs, front of house, and crew — are all passionate about hospitality. We work with local suppliers
+            and fishermen across Suffolk to bring honest, seasonal dishes to your table. Whether you’re celebrating or simply
+            sharing a meal, expect relaxed service with thoughtful attention to detail.
+          </p>
+        </div>
+
+        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
+          <h4 style="margin-top:0;">Quick Facts</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+            <li>Waterfront location in Ipswich harbour</li>
+            <li>Locally sourced seafood & seasonal menus</li>
+            <li>Group bookings & private events</li>
+            <li>Laid-back coastal atmosphere</li>
+          </ul>
+        </div>
+        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
+          <h4 style="margin-top:0;">DISCLAMER</h4>
+          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+            <li>This is a fictonal restaurant</li>
+            <li>This was made by a 14 year old</li>
+            <li>Made for fun learning!</li>
+            
+            
+            
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu" aria-labelledby="menu-heading">
+      <div class="container">
+        <h3 id="menu-heading">Menu</h3>
+        <p class="small" style="margin-bottom:14px; color:var(--muted);">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.</p>
+
+        <div class="menu-grid">
+          <div class="menu-card">
+            <h4>Set Sail (Starters)</h4>
+            <div class="dish"><span>Harbour-Smoked Mackerel</span><strong>£8.50</strong></div>
+            <div class="dish"><span>Sea-Salted Crab Croquettes</span><strong>£7.75</strong></div>
+            <div class="dish"><span>Radish & Dill Flatbread</span><strong>£6.00</strong></div>
+          </div>
+
+          <div class="menu-card">
+            <h4>Open Waters (Mains)</h4>
+            <div class="dish"><span>Catch of the Day — Market Price</span><strong>—</strong></div>
+            <div class="dish"><span>Pan-Fried Sea Bass & Herb Butter</span><strong>£18.50</strong></div>
+            <div class="dish"><span>Slow-Braised Beef & Ale Pie</span><strong>£15.50</strong></div>
+          </div>
+
+          <div class="menu-card">
+            <h4>From Dock to Dish (Seafood)</h4>
+            <div class="dish"><span>Suffolk Fisherman’s Stew</span><strong>£17.00</strong></div>
+            <div class="dish"><span>Salt Crusted Monkfish</span><strong>£19.50</strong></div>
+          </div>
+
+          <div class="menu-card">
+            <h4>Safe Harbour (Desserts)</h4>
+            <div class="dish"><span>Sticky Toffee Pudding</span><strong>£6.50</strong></div>
+            <div class="dish"><span>Sea-Salted Caramel Tart</span><strong>£6.75</strong></div>
+            <div class="dish"><span>Selection of Local Cheeses</span><strong>£8.00</strong></div>
+          </div>
+        </div>
+
+        <p class="small" style="margin-top:12px; color:var(--muted);">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <h3 id="gallery-heading">Through the Porthole</h3>
+        <p class="small" style="color:var(--muted);">A glimpse of our space, the view from the deck, and the plates that define us.</p>
+        <div class="gallery" style="margin-top:12px;">
+          <!-- Replace with actual gallery images -->
+          <img src="static/img/Themainrestarant.jpg" alt="View from the deck at The Nautical Mile" />
+          <img src="static/img/Themainrestarant.jpg" alt="Seafood dish on a wooden table" />
+          <img src="static/img/Themainrestarant.jpg" alt="Interior seating with waterfront view" />
+          <img src="static/img/Themainrestarant.jpg" alt="Evening lights along Ipswich waterfront" />
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVATIONS -->
+    <section id="reservations" aria-labelledby="reservations-heading">
+      <div class="container" style="display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start;">
+        <div>
+          <h3 id="reservations-heading">Book Your Berth</h3>
+          <p class="small" style="color:var(--muted);">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
+
+          <h4 style="margin-top:16px;">Private Voyages & Events</h4>
+          <p class="small" style="color:var(--muted);">
+            Looking for the ideal spot for birthdays, anniversaries, or corporate gatherings? Tell our events team the size and style of your event and we’ll chart the perfect course.
+          </p>
+        </div>
+
+        <aside>
+          <form class="form" aria-label="Reservation form" method="post" action="/reserve">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Your full name" />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required />
+
+            <label for="time">Time</label>
+            <input id="time" name="time" type="time" required />
+
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
+            </select>
+
+            <label for="requests">Special requests</label>
+            <textarea id="requests" name="requests" rows="3" placeholder="Dietary needs, celebrations, accessibility requests..."></textarea>
+
+            <button type="submit">Request Reservation</button>
+
+            <p class="small" style="margin-top:10px; color:var(--muted);">You’ll receive a confirmation email once your reservation is processed. For urgent bookings, please call us.</p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" aria-labelledby="events-heading">
+      <div class="container">
+        <h3 id="events-heading">On the Horizon</h3>
+        <p class="small" style="color:var(--muted);">From live music nights to seasonal festivals, there’s always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
+
+        <ul style="padding-left:18px; color:var(--muted); margin-top:12px;">
+          <li><strong>Friday Live Sessions</strong> — local musicians, relaxed vibes.</li>
+          <li><strong>Sunday Harbour Roast</strong> — weekly roast & family-friendly menu.</li>
+          <li><strong>Seasonal Seafood Feast</strong> — special tasting evenings celebrating local catch.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container" style="display:grid; grid-template-columns: 1fr 320px; gap:22px; align-items:start;">
+        <div>
+          <h3 id="contact-heading">Drop Anchor Here</h3>
+          <p class="small" style="color:var(--muted);">
+            Find us at Ipswich Waterfront — a short walk from the station. For directions, dietary info, or event enquiries, reach out below.
+          </p>
+
+          <p style="margin-top:12px;">
+            <strong>Address:</strong><br />
+            The Nautical Mile<br />
+            Ipswich Waterfront<br />
+            Ipswich, Suffolk
+          </p>
+
+          <p>
+            <strong>Phone:</strong> <a href="tel:+441234567890">+44 1234 567 890</a><br />
+            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk">hello@thenauticalmile.co.uk</a>
+          </p>
+        </div>
+
+        <aside style="background:#fff; padding:14px; border-radius:10px; box-shadow:0 10px 30px rgba(3,44,69,0.04);">
+          <h4 style="margin-top:0;">Send a Message in a Bottle</h4>
+          <form method="post" action="/contact">
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" required />
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" required />
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <img src="static/img/Logonowords.png" alt="logo icon" style="height:34px;" />
+        <div>
+          <div style="font-weight:700;">The Nautical Mile</div>
+          <div class="small">Anchored in Flavour • Ipswich Waterfront</div>
+        </div>
+      </div>
+
+      <div class="small">© <span id="year"></span> The Nautical Mile — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
