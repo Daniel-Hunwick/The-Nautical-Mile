@@ -7,34 +7,45 @@
   <meta name="description" content="The Nautical Mile — Ipswich waterfront dining. Anchored in flavour, where the tide meets the table.">
   <style>
     :root{
-      --navy: #032c45;
-      --seafoam: #9fd6c9;
-      --gold: #cfa14b;
-      --ivory: #f5f2ea;
-      --muted: #6b7a85;
+      --aero-blue: #00a8ff;
+      --aero-cyan: #4dd0e1;
+      --aero-green: #00e676;
+      --aero-white: #ffffff;
+      --glass-white: rgba(255, 255, 255, 0.85);
+      --glass-blue: rgba(100, 200, 255, 0.25);
       --maxWidth: 1100px;
-      --radius: 10px;
-      font-family: "Segoe UI", Roboto, -apple-system, "Helvetica Neue", Arial, sans-serif;
-      color: var(--navy);
+      --radius: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      background: linear-gradient(180deg, var(--ivory), #ffffff);
+      background: 
+        radial-gradient(ellipse at top, rgba(100, 200, 255, 0.3), transparent),
+        linear-gradient(135deg, #7dd3fc 0%, #38bdf8 25%, #0ea5e9 50%, #0284c7 75%, #0369a1 100%);
+      background-size: 100% 100%;
+      background-attachment: fixed;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
+      min-height: 100vh;
     }
 
+    /* Glossy glass header */
     header{
-      background: linear-gradient(90deg, rgba(3,44,69,0.95), rgba(9,58,92,0.95));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
       color: #fff;
       padding: 18px 16px;
       position: sticky;
       top:0;
       z-index: 20;
-      box-shadow: 0 4px 18px rgba(3,44,69,0.15);
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
     .container{
       width:95%;
@@ -52,17 +63,28 @@
       gap:12px;
       align-items:center;
     }
-    .brand img{height:48px; width:auto; display:block; border-radius:6px; background:#fff; padding:4px;}
+    .brand img{
+      height:48px; 
+      width:auto; 
+      display:block; 
+      border-radius:12px; 
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+      padding:8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
     .brand h1{
       margin:0;
-      font-size:18px;
-      letter-spacing:1px;
-      font-weight:700;
+      font-size:20px;
+      letter-spacing:0.5px;
+      font-weight:600;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     nav ul{
       list-style:none;
       display:flex;
-      gap:18px;
+      gap:8px;
       margin:0;
       padding:0;
       align-items:center;
@@ -72,7 +94,19 @@
       text-decoration:none;
       font-weight:600;
       font-size:14px;
-      opacity:0.95;
+      padding: 8px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    nav a:hover{
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
     .hero{
       padding: 48px 0;
@@ -82,33 +116,87 @@
     }
     .hero-left{
       flex:1;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+      padding: 32px;
+      border-radius: 24px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
-    .eyebrow{ color: var(--gold); font-weight:700; letter-spacing:1px; margin-bottom:12px;}
-    .hero h2{ margin:0 0 16px 0; font-size:34px; color:var(--navy);}
-    .lead{color:var(--muted); max-width:62ch; margin-bottom:22px;}
+    .eyebrow{ 
+      color: #0ea5e9; 
+      font-weight:700; 
+      letter-spacing:2px; 
+      margin-bottom:12px;
+      text-transform: uppercase;
+      font-size: 12px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .hero h2{ 
+      margin:0 0 16px 0; 
+      font-size:38px; 
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    .lead{
+      color: rgba(255, 255, 255, 0.95); 
+      max-width:62ch; 
+      margin-bottom:22px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      font-size: 16px;
+    }
     .cta{
       display:inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      padding:12px 18px;
-      border-radius:8px;
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      color: #fff;
+      padding:14px 28px;
+      border-radius:16px;
       font-weight:700;
       text-decoration:none;
-      box-shadow: 0 6px 12px rgba(207,161,75,0.18);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .cta:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.5),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
     }
     .hero-right{
       width:300px;
       text-align:center;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(250,250,250,0.9));
-      padding:18px;
-      box-shadow: 0 10px 30px rgba(3,44,69,0.06);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+      backdrop-filter: blur(15px);
+      padding:24px;
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
-    .logo-placeholder{height:160px; display:flex; align-items:center; justify-content:center}
-    .logo-placeholder img{max-width:100%; height:auto; display:block}
+    .logo-placeholder{
+      height:160px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.3), transparent);
+    }
+    .logo-placeholder img{max-width:100%; height:auto; display:block; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));}
 
-    section{ padding:36px 0; border-bottom: 1px solid rgba(3,44,69,0.04); }
-    h3{ color:var(--navy); margin-top:0; }
+    section{ 
+      padding:36px 0;
+    }
+    h3{ 
+      color: #fff; 
+      margin-top:0;
+      font-size: 32px;
+      font-weight: 600;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      letter-spacing: -0.5px;
+    }
     .grid{
       display:grid;
       gap:18px;
@@ -119,36 +207,160 @@
 
     /* Menu */
     .menu-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); display:grid; gap:16px; }
-    .menu-card{ background: #fff; padding:16px; border-radius:10px; box-shadow: 0 8px 18px rgba(3,44,69,0.04); }
-    .menu-card h4{ margin:0 0 8px 0; color:var(--navy); }
-    .dish{ display:flex; justify-content:space-between; color:var(--muted); padding:6px 0; border-bottom:1px dashed rgba(3,44,69,0.03); }
+    .menu-card{ 
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+      backdrop-filter: blur(15px);
+      padding:20px; 
+      border-radius:20px; 
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: transform 0.3s ease;
+    }
+    .menu-card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(31, 142, 255, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .menu-card h4{ 
+      margin:0 0 12px 0; 
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .dish{ 
+      display:flex; 
+      justify-content:space-between; 
+      color: rgba(255, 255, 255, 0.9); 
+      padding:8px 0; 
+      border-bottom:1px solid rgba(255, 255, 255, 0.2);
+      font-size: 14px;
+    }
 
     /* Gallery */
-    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
-    .gallery img{ width:100%; height:140px; object-fit:cover; border-radius:8px; display:block;}
+    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; }
+    .gallery img{ 
+      width:100%; 
+      height:140px; 
+      object-fit:cover; 
+      border-radius:16px; 
+      display:block;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover{
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
 
     /* Reservations and contact */
     .form{
-      background: #fff;
-      padding:18px;
-      border-radius:10px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+      backdrop-filter: blur(15px);
+      padding:24px;
+      border-radius:20px;
       max-width:540px;
-      box-shadow: 0 10px 30px rgba(3,44,69,0.04);
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
-    label{ display:block; margin:8px 0 6px; font-weight:600; font-size:13px; color:var(--navy);}
-    input, textarea, select{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e6e6; font-size:14px; }
-    button[type="submit"]{ margin-top:12px; background:var(--navy); color:#fff; border:none; padding:12px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+    label{ 
+      display:block; 
+      margin:12px 0 6px; 
+      font-weight:600; 
+      font-size:14px; 
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+    input, textarea, select{ 
+      width:100%; 
+      padding:12px 14px; 
+      border-radius:12px; 
+      border:1px solid rgba(255, 255, 255, 0.3); 
+      font-size:14px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      color: #333;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus, select:focus{
+      outline: none;
+      border-color: rgba(6, 182, 212, 0.6);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1),
+                  inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    button[type="submit"]{ 
+      margin-top:16px; 
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      color:#fff; 
+      border:none; 
+      padding:14px 18px; 
+      border-radius:12px; 
+      cursor:pointer; 
+      font-weight:700;
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      width: 100%;
+    }
+    button[type="submit"]:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.5),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
 
     .footer{
-      background: linear-gradient(90deg, rgba(3,44,69,0.98), rgba(9,58,92,0.98));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
       color:#fff;
-      padding:20px 0;
-      margin-top:8px;
+      padding:24px 0;
+      margin-top:48px;
+      box-shadow: 0 -8px 32px rgba(31, 142, 255, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.4);
     }
-    .small{ font-size:13px; color:rgba(255,255,255,0.85); }
+    .small{ 
+      font-size:13px; 
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Glass boxes for content sections */
+    .glass-box{
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+      backdrop-filter: blur(15px);
+      padding:24px;
+      border-radius:20px;
+      box-shadow: 0 8px 32px rgba(31, 142, 255, 0.15),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.95);
+    }
+    .glass-box h4{
+      color: #fff;
+      margin-top: 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .glass-box p, .glass-box ul{
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .glass-box ul li strong{
+      color: #fff;
+    }
+    
     @media (max-width:880px){
       .about-grid{ grid-template-columns: 1fr; }
       nav ul{ display:none; }
+      .hero{ flex-direction: column; }
+      .hero-right{ width: 100%; }
     }
   </style>
 </head>
@@ -160,7 +372,7 @@
         <!-- Replace these placeholders with your logo files -->
         <img src="static/img/Logonowords-removebg.png" alt="The Nautical Mile logo icon" />
         <div>
-          <h1>The Nautical Mile</h1>
+          <div style="font-weight:700; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">The Nautical Mile</div>
           <div class="small">Ipswich Waterfront</div>
         </div>
       </div>
@@ -199,14 +411,14 @@
           <!-- logo.png should be the full logo with the anchor & rope -->
           <img src="static/img/logo.png" alt="The Nautical Mile logo (anchor and rope emblem)" />
         </div>
-        <div class="small" style="margin-top:10px;color:var(--muted);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
+        <div class="small" style="margin-top:10px; color: rgba(255, 255, 255, 0.9);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
       </aside>
     </section>
 
     <!-- ABOUT -->
     <section id="about" aria-labelledby="about-heading">
       <div class="about-grid container">
-        <div>
+        <div class="glass-box">
           <h3 id="about-heading">Our Voyage</h3>
           <p>
             The Nautical Mile was founded with one simple idea: celebrate Ipswich’s maritime roots while offering a modern,
@@ -222,18 +434,18 @@
           </p>
         </div>
 
-        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
+        <div class="glass-box">
           <h4 style="margin-top:0;">Quick Facts</h4>
-          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+          <ul style="margin:0; padding-left:18px;">
             <li>Waterfront location in Ipswich harbour</li>
             <li>Locally sourced seafood & seasonal menus</li>
             <li>Group bookings & private events</li>
             <li>Laid-back coastal atmosphere</li>
           </ul>
         </div>
-        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
-          <h4 style="margin-top:0;">DISCLAMER</h4>
-          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+        <div class="glass-box">
+          <h4 style="margin-top:0;">DISCLAIMER</h4>
+          <ul style="margin:0; padding-left:18px;">
             <li>This is a fictitious restaurant</li>
             <li>This was made by a 14 year old</li>
             <li>Made for fun learning!</li>
@@ -249,7 +461,7 @@
     <section id="menu" aria-labelledby="menu-heading">
       <div class="container">
         <h3 id="menu-heading">Menu</h3>
-        <p class="small" style="margin-bottom:14px; color:var(--muted);">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.
+        <p class="small" style="margin-bottom:14px;">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.
 
         </p>
 
@@ -285,7 +497,7 @@
           </div>
         </div>
 
-        <p class="small" style="margin-top:12px; color:var(--muted);">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
+        <p class="small" style="margin-top:12px;">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
       </div>
     </section>
 
@@ -293,7 +505,7 @@
     <section id="gallery" aria-labelledby="gallery-heading">
       <div class="container">
         <h3 id="gallery-heading">Through the Porthole</h3>
-        <p class="small" style="color:var(--muted);">A glimpse of our space, the view from the deck, and the plates that define us.</p>
+        <p class="small">A glimpse of our space, the view from the deck, and the plates that define us.</p>
         <div class="gallery" style="margin-top:12px;">
           <!-- Replace with actual gallery images -->
           <img src="static/img/Themainrestarant.jpg" alt="View from the deck at The Nautical Mile" />
@@ -307,12 +519,12 @@
     <!-- RESERVATIONS -->
     <section id="reservations" aria-labelledby="reservations-heading">
       <div class="container" style="display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start;">
-        <div>
+        <div class="glass-box">
           <h3 id="reservations-heading">Book Your Berth</h3>
-          <p class="small" style="color:var(--muted);">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
+          <p class="small">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
 
           <h4 style="margin-top:16px;">Private Voyages & Events</h4>
-          <p class="small" style="color:var(--muted);">
+          <p class="small">
             Looking for the ideal spot for birthdays, anniversaries, or corporate gatherings? Tell our events team the size and style of your event and we’ll chart the perfect course.
           </p>
         </div>
@@ -346,7 +558,7 @@
 
             <button type="submit">Request Reservation</button>
 
-            <p class="small" style="margin-top:10px; color:var(--muted);">You’ll receive a confirmation email once your reservation is processed. For urgent bookings, please call us. But please remember this is a fictonal table as its a fictonal restaurant.</p>
+            <p class="small" style="margin-top:10px;">You'll receive a confirmation email once your reservation is processed. For urgent bookings, please call us. But please remember this is a fictonal table as its a fictonal restaurant.</p>
           </form>
         </aside>
       </div>
@@ -356,22 +568,24 @@
     <section id="events" aria-labelledby="events-heading">
       <div class="container">
         <h3 id="events-heading">On the Horizon</h3>
-        <p class="small" style="color:var(--muted);">From live music nights to seasonal festivals, there’s always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
+        <div class="glass-box">
+          <p class="small">From live music nights to seasonal festivals, there's always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
 
-        <ul style="padding-left:18px; color:var(--muted); margin-top:12px;">
-          <li><strong>Friday Fun Sessions</strong> — Bounty Bingo, relaxed vibes.</li>
-          <li><strong>Sunday Harbour Roast</strong> — weekly roast & family-friendly menu.</li>
-          <li><strong>Seasonal Seafood Feast</strong> — For VIP's only, celebrating the catch of the day every season!</li>
-        </ul>
+          <ul style="padding-left:18px; margin-top:12px;">
+            <li><strong>Friday Fun Sessions</strong> — Bounty Bingo, relaxed vibes.</li>
+            <li><strong>Sunday Harbour Roast</strong> — weekly roast & family-friendly menu.</li>
+            <li><strong>Seasonal Seafood Feast</strong> — For VIP's only, celebrating the catch of the day every season!</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="container" style="display:grid; grid-template-columns: 1fr 320px; gap:22px; align-items:start;">
-        <div>
+        <div class="glass-box">
           <h3 id="contact-heading">Drop Anchor Here</h3>
-          <p class="small" style="color:var(--muted);">
+          <p class="small">
             Find us at Ipswich Waterfront — a short walk from the station. For directions, dietary info, or event enquiries, reach out below.
           </p>
 
@@ -383,13 +597,13 @@
           </p>
 
           <p>
-            <strong>Phone:</strong> <a href="tel:+441234567890">+44 1234 567 890</a><br />
-            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk">hello@thenauticalmile.co.uk</a>
+            <strong>Phone:</strong> <a href="tel:+441234567890" style="color: rgba(255, 255, 255, 0.95);">+44 1234 567 890</a><br />
+            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk" style="color: rgba(255, 255, 255, 0.95);">hello@thenauticalmile.co.uk</a>
           </p>
         </div>
 
-        <aside style="background:#fff; padding:14px; border-radius:10px; box-shadow:0 10px 30px rgba(3,44,69,0.04);">
-          <h4 style="margin-top:0;">Send a Message in a Bottle</h4>
+        <aside class="form">
+          <h4 style="margin-top:0; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">Send a Message in a Bottle</h4>
           <form method="post" action="/contact">
             <label for="c-name">Name</label>
             <input id="c-name" name="name" type="text" required />
