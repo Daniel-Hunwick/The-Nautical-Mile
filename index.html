@@ -7,39 +7,122 @@
   <meta name="description" content="The Nautical Mile — Ipswich waterfront dining. Anchored in flavour, where the tide meets the table.">
   <style>
     :root{
-      --navy: #032c45;
-      --seafoam: #9fd6c9;
-      --gold: #cfa14b;
-      --ivory: #f5f2ea;
-      --muted: #6b7a85;
+      --aero-blue: #00a8ff;
+      --aero-cyan: #4dd0e1;
+      --aero-green: #00e676;
+      --aero-lime: #7cf05a;
+      --aero-white: #ffffff;
+      --glass-white: rgba(255, 255, 255, 0.85);
+      --glass-blue: rgba(100, 200, 255, 0.25);
       --maxWidth: 1100px;
-      --radius: 10px;
-      font-family: "Segoe UI", Roboto, -apple-system, "Helvetica Neue", Arial, sans-serif;
-      color: var(--navy);
+      --radius: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      background: linear-gradient(180deg, var(--ivory), #ffffff);
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74, 222, 128, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at center, rgba(100, 200, 255, 0.2), transparent),
+        linear-gradient(135deg, #38bdf8 0%, #22d3ee 20%, #10b981 40%, #14b8a6 60%, #06b6d4 80%, #0284c7 100%);
+      background-size: 100% 100%;
+      background-attachment: fixed;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      animation: backgroundShift 15s ease infinite alternate;
+    }
+    
+    @keyframes backgroundShift {
+      0% { filter: hue-rotate(0deg) brightness(1); }
+      100% { filter: hue-rotate(10deg) brightness(1.05); }
+    }
+    
+    /* Floating bubbles */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body::before {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(34, 211, 238, 0.2) 40%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      animation: float1 20s ease-in-out infinite;
+      box-shadow: inset -20px -20px 60px rgba(255, 255, 255, 0.3),
+                  0 0 100px rgba(34, 211, 238, 0.3);
+    }
+    
+    body::after {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(74, 222, 128, 0.2) 40%, transparent 70%);
+      bottom: -80px;
+      left: -80px;
+      animation: float2 25s ease-in-out infinite;
+      box-shadow: inset -15px -15px 50px rgba(255, 255, 255, 0.3),
+                  0 0 80px rgba(74, 222, 128, 0.3);
+    }
+    
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-50px, 50px) scale(1.1); }
+      66% { transform: translate(30px, -30px) scale(0.9); }
+    }
+    
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, -40px) scale(1.15); }
     }
 
+    /* Glossy glass header */
     header{
-      background: linear-gradient(90deg, rgba(3,44,69,0.95), rgba(9,58,92,0.95));
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.5) 0%, 
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.4) 100%);
+      backdrop-filter: blur(25px) saturate(180%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.4);
       color: #fff;
       padding: 18px 16px;
       position: sticky;
       top:0;
       z-index: 20;
-      box-shadow: 0 4px 18px rgba(3,44,69,0.15);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.3),
+                  0 0 60px rgba(74, 222, 128, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
     }
     .container{
       width:95%;
       max-width: var(--maxWidth);
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
     .nav{
       display:flex;
@@ -52,17 +135,52 @@
       gap:12px;
       align-items:center;
     }
-    .brand img{height:48px; width:auto; display:block; border-radius:6px; background:#fff; padding:4px;}
+    .brand img{
+      height:48px; 
+      width:auto; 
+      display:block; 
+      border-radius:14px; 
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
+      padding:10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+                  0 0 40px rgba(34, 211, 238, 0.3),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.9),
+                  inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .brand img::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+    
     .brand h1{
       margin:0;
-      font-size:18px;
-      letter-spacing:1px;
-      font-weight:700;
+      font-size:20px;
+      letter-spacing:0.5px;
+      font-weight:600;
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 50%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     }
     nav ul{
       list-style:none;
       display:flex;
-      gap:18px;
+      gap:8px;
       margin:0;
       padding:0;
       align-items:center;
@@ -72,43 +190,271 @@
       text-decoration:none;
       font-weight:600;
       font-size:14px;
-      opacity:0.95;
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    nav a:hover{
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(74, 222, 128, 0.3) 50%,
+        rgba(34, 211, 238, 0.3) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4),
+                  0 0 30px rgba(74, 222, 128, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
     }
     .hero{
       padding: 48px 0;
       display:flex;
       gap:24px;
       align-items:center;
+      position: relative;
     }
+    
+    /* Decorative orbs */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .hero::before {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.5), 
+        rgba(34, 211, 238, 0.3) 40%, 
+        transparent 70%);
+      top: 20%;
+      right: 10%;
+      animation: floatOrb1 15s ease-in-out infinite;
+      box-shadow: inset -10px -10px 30px rgba(255, 255, 255, 0.4),
+                  0 0 60px rgba(34, 211, 238, 0.4);
+    }
+    
+    .hero::after {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.4), 
+        rgba(74, 222, 128, 0.3) 40%, 
+        transparent 70%);
+      bottom: 10%;
+      left: 5%;
+      animation: floatOrb2 12s ease-in-out infinite;
+      box-shadow: inset -8px -8px 25px rgba(255, 255, 255, 0.4),
+                  0 0 50px rgba(74, 222, 128, 0.4);
+    }
+    
+    @keyframes floatOrb1 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+      50% { transform: translate(20px, -20px) scale(1.2); opacity: 1; }
+    }
+    
+    @keyframes floatOrb2 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      50% { transform: translate(-15px, 15px) scale(1.1); opacity: 0.9; }
+    }
+    
     .hero-left{
       flex:1;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.5) 100%);
+      padding: 36px;
+      border-radius: 28px;
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.25),
+                  0 0 80px rgba(74, 222, 128, 0.15),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
     }
-    .eyebrow{ color: var(--gold); font-weight:700; letter-spacing:1px; margin-bottom:12px;}
-    .hero h2{ margin:0 0 16px 0; font-size:34px; color:var(--navy);}
-    .lead{color:var(--muted); max-width:62ch; margin-bottom:22px;}
+    
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    
+    .eyebrow{ 
+      color: #10b981; 
+      font-weight:700; 
+      letter-spacing:2.5px; 
+      margin-bottom:12px;
+      text-transform: uppercase;
+      font-size: 11px;
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.8),
+                   0 2px 4px rgba(0, 0, 0, 0.2);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 2px 4px rgba(0, 0, 0, 0.2); }
+      to { text-shadow: 0 0 30px rgba(16, 185, 129, 1), 0 2px 4px rgba(0, 0, 0, 0.2); }
+    }
+    
+    .hero h2{ 
+      margin:0 0 16px 0; 
+      font-size:42px; 
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 40%, #a5f3fc 70%, #5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .lead{
+      color: rgba(255, 255, 255, 0.95); 
+      max-width:62ch; 
+      margin-bottom:22px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+      line-height: 1.7;
+    }
     .cta{
       display:inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      padding:12px 18px;
-      border-radius:8px;
+      background: linear-gradient(135deg, #22d3ee 0%, #10b981 50%, #14b8a6 100%);
+      color: #fff;
+      padding:16px 32px;
+      border-radius:18px;
       font-weight:700;
       text-decoration:none;
-      box-shadow: 0 6px 12px rgba(207,161,75,0.18);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5),
+                  0 0 50px rgba(34, 211, 238, 0.3),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.6),
+                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .cta:hover{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6),
+                  0 0 70px rgba(34, 211, 238, 0.5),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
     }
     .hero-right{
       width:300px;
       text-align:center;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(255,255,255,0.8),rgba(250,250,250,0.9));
-      padding:18px;
-      box-shadow: 0 10px 30px rgba(3,44,69,0.06);
+      border-radius: 28px;
+      background: linear-gradient(135deg, 
+        rgba(255,255,255,0.65) 0%, 
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0.55) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      padding:28px;
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.3),
+                  0 0 70px rgba(74, 222, 128, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.8),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+      overflow: hidden;
     }
-    .logo-placeholder{height:160px; display:flex; align-items:center; justify-content:center}
-    .logo-placeholder img{max-width:100%; height:auto; display:block}
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .logo-placeholder{
+      height:160px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent);
+      position: relative;
+    }
+    .logo-placeholder::before {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent 70%);
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+    .logo-placeholder img{
+      max-width:100%; 
+      height:auto; 
+      display:block; 
+      filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.2))
+              drop-shadow(0 0 30px rgba(34, 211, 238, 0.4));
+      position: relative;
+      z-index: 1;
+    }
 
-    section{ padding:36px 0; border-bottom: 1px solid rgba(3,44,69,0.04); }
-    h3{ color:var(--navy); margin-top:0; }
+    section{ 
+      padding:36px 0;
+      position: relative;
+    }
+    h3{ 
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 40%, #a5f3fc 70%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top:0;
+      font-size: 36px;
+      font-weight: 700;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+      letter-spacing: -1px;
+    }
     .grid{
       display:grid;
       gap:18px;
@@ -119,40 +465,285 @@
 
     /* Menu */
     .menu-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); display:grid; gap:16px; }
-    .menu-card{ background: #fff; padding:16px; border-radius:10px; box-shadow: 0 8px 18px rgba(3,44,69,0.04); }
-    .menu-card h4{ margin:0 0 8px 0; color:var(--navy); }
-    .dish{ display:flex; justify-content:space-between; color:var(--muted); padding:6px 0; border-bottom:1px dashed rgba(3,44,69,0.03); }
+    .menu-card{ 
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.5) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      padding:24px; 
+      border-radius:24px; 
+      box-shadow: 0 10px 35px rgba(34, 211, 238, 0.25),
+                  0 0 60px rgba(74, 222, 128, 0.15),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .menu-card:hover{
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35),
+                  0 0 80px rgba(74, 222, 128, 0.25),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.8),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+    }
+    .menu-card h4{ 
+      margin:0 0 16px 0; 
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 50%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 20px;
+      font-weight: 700;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    }
+    .dish{ 
+      display:flex; 
+      justify-content:space-between; 
+      color: rgba(255, 255, 255, 0.9); 
+      padding:8px 0; 
+      border-bottom:1px solid rgba(255, 255, 255, 0.2);
+      font-size: 14px;
+    }
 
     /* Gallery */
-    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; }
-    .gallery img{ width:100%; height:140px; object-fit:cover; border-radius:8px; display:block;}
+    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; }
+    .gallery img{ 
+      width:100%; 
+      height:140px; 
+      object-fit:cover; 
+      border-radius:20px; 
+      display:block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
+                  0 0 50px rgba(34, 211, 238, 0.3),
+                  inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .gallery img:hover{
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                  0 0 70px rgba(74, 222, 128, 0.4),
+                  inset 0 0 0 2px rgba(255, 255, 255, 0.6);
+      filter: brightness(1.05) saturate(1.2);
+    }
 
     /* Reservations and contact */
     .form{
-      background: #fff;
-      padding:18px;
-      border-radius:10px;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.5) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      padding:28px;
+      border-radius:24px;
       max-width:540px;
-      box-shadow: 0 10px 30px rgba(3,44,69,0.04);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.3),
+                  0 0 70px rgba(74, 222, 128, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
     }
-    label{ display:block; margin:8px 0 6px; font-weight:600; font-size:13px; color:var(--navy);}
-    input, textarea, select{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6e6e6; font-size:14px; }
-    button[type="submit"]{ margin-top:12px; background:var(--navy); color:#fff; border:none; padding:12px 14px; border-radius:8px; cursor:pointer; font-weight:700; }
+    .form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    label{ 
+      display:block; 
+      margin:12px 0 6px; 
+      font-weight:600; 
+      font-size:14px; 
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+    input, textarea, select{ 
+      width:100%; 
+      padding:12px 16px; 
+      border-radius:14px; 
+      border:2px solid rgba(255, 255, 255, 0.4); 
+      font-size:14px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+      backdrop-filter: blur(10px);
+      color: #333;
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.08),
+                  0 2px 8px rgba(34, 211, 238, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    input:focus, textarea:focus, select:focus{
+      outline: none;
+      border-color: rgba(16, 185, 129, 0.7);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
+                  0 0 20px rgba(74, 222, 128, 0.3),
+                  inset 0 2px 6px rgba(0, 0, 0, 0.05);
+      transform: translateY(-1px);
+    }
+    button[type="submit"]{ 
+      margin-top:18px; 
+      background: linear-gradient(135deg, #22d3ee 0%, #10b981 50%, #14b8a6 100%);
+      color:#fff; 
+      border:none; 
+      padding:16px 20px; 
+      border-radius:14px; 
+      cursor:pointer; 
+      font-weight:700;
+      font-size: 15px;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5),
+                  0 0 50px rgba(34, 211, 238, 0.3),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.6),
+                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    button[type="submit"]::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    button[type="submit"]:hover{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6),
+                  0 0 70px rgba(34, 211, 238, 0.5),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    }
 
     .footer{
-      background: linear-gradient(90deg, rgba(3,44,69,0.98), rgba(9,58,92,0.98));
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.35) 100%);
+      backdrop-filter: blur(25px) saturate(180%);
+      border-top: 2px solid rgba(255, 255, 255, 0.4);
       color:#fff;
-      padding:20px 0;
-      margin-top:8px;
+      padding:28px 0;
+      margin-top:48px;
+      box-shadow: 0 -10px 40px rgba(34, 211, 238, 0.2),
+                  0 0 60px rgba(74, 222, 128, 0.15),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.5),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      position: relative;
     }
-    .small{ font-size:13px; color:rgba(255,255,255,0.85); }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .small{ 
+      font-size:13px; 
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Glass boxes for content sections */
+    .glass-box{
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.5) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      padding:28px;
+      border-radius:24px;
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.25),
+                  0 0 70px rgba(74, 222, 128, 0.15),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.95);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .glass-box h4{
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 50%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: 0;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+      font-weight: 700;
+    }
+    .glass-box p, .glass-box ul{
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .glass-box ul li strong{
+      color: #fff;
+    }
+    
     @media (max-width:880px){
       .about-grid{ grid-template-columns: 1fr; }
       nav ul{ display:none; }
+      .hero{ flex-direction: column; }
+      .hero-right{ width: 100%; }
     }
   </style>
 </head>
 <body>
+  <!-- Decorative floating bubbles -->
+  <div style="position: fixed; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(34, 211, 238, 0.2) 50%, transparent 70%); top: 15%; left: 8%; pointer-events: none; z-index: 0; box-shadow: inset -8px -8px 25px rgba(255, 255, 255, 0.4), 0 0 50px rgba(34, 211, 238, 0.3); animation: floatBubble1 18s ease-in-out infinite;"></div>
+  <div style="position: fixed; width: 60px; height: 60px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(74, 222, 128, 0.2) 50%, transparent 70%); top: 60%; right: 12%; pointer-events: none; z-index: 0; box-shadow: inset -6px -6px 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(74, 222, 128, 0.3); animation: floatBubble2 22s ease-in-out infinite;"></div>
+  <div style="position: fixed; width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(34, 211, 238, 0.15) 50%, transparent 70%); bottom: 20%; left: 15%; pointer-events: none; z-index: 0; box-shadow: inset -10px -10px 30px rgba(255, 255, 255, 0.3), 0 0 60px rgba(34, 211, 238, 0.2); animation: floatBubble3 25s ease-in-out infinite;"></div>
+  
+  <style>
+    @keyframes floatBubble1 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      33% { transform: translate(30px, -40px) scale(1.2); opacity: 0.8; }
+      66% { transform: translate(-20px, 30px) scale(0.9); opacity: 0.7; }
+    }
+    @keyframes floatBubble2 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+      50% { transform: translate(-40px, -30px) scale(1.15); opacity: 0.75; }
+    }
+    @keyframes floatBubble3 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+      40% { transform: translate(25px, -35px) scale(1.1); opacity: 0.8; }
+      80% { transform: translate(-30px, 20px) scale(0.95); opacity: 0.6; }
+    }
+  </style>
 
   <header>
     <div class="container nav" role="navigation" aria-label="Main">
@@ -160,7 +751,7 @@
         <!-- Replace these placeholders with your logo files -->
         <img src="static/img/Logonowords-removebg.png" alt="The Nautical Mile logo icon" />
         <div>
-          <h1>The Nautical Mile</h1>
+          <div style="font-weight:700; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">The Nautical Mile</div>
           <div class="small">Ipswich Waterfront</div>
         </div>
       </div>
@@ -199,14 +790,14 @@
           <!-- logo.png should be the full logo with the anchor & rope -->
           <img src="static/img/logo.png" alt="The Nautical Mile logo (anchor and rope emblem)" />
         </div>
-        <div class="small" style="margin-top:10px;color:var(--muted);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
+        <div class="small" style="margin-top:10px; color: rgba(255, 255, 255, 0.9);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
       </aside>
     </section>
 
     <!-- ABOUT -->
     <section id="about" aria-labelledby="about-heading">
       <div class="about-grid container">
-        <div>
+        <div class="glass-box">
           <h3 id="about-heading">Our Voyage</h3>
           <p>
             The Nautical Mile was founded with one simple idea: celebrate Ipswich’s maritime roots while offering a modern,
@@ -222,18 +813,18 @@
           </p>
         </div>
 
-        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
+        <div class="glass-box">
           <h4 style="margin-top:0;">Quick Facts</h4>
-          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+          <ul style="margin:0; padding-left:18px;">
             <li>Waterfront location in Ipswich harbour</li>
             <li>Locally sourced seafood & seasonal menus</li>
             <li>Group bookings & private events</li>
             <li>Laid-back coastal atmosphere</li>
           </ul>
         </div>
-        <div style="background:linear-gradient(180deg, #fff, #fdfdfd); padding:16px; border-radius:10px;">
-          <h4 style="margin-top:0;">DISCLAMER</h4>
-          <ul style="margin:0; padding-left:18px; color:var(--muted);">
+        <div class="glass-box">
+          <h4 style="margin-top:0;">DISCLAIMER</h4>
+          <ul style="margin:0; padding-left:18px;">
             <li>This is a fictitious restaurant</li>
             <li>This was made by a 14 year old</li>
             <li>Made for fun learning!</li>
@@ -249,7 +840,7 @@
     <section id="menu" aria-labelledby="menu-heading">
       <div class="container">
         <h3 id="menu-heading">Menu</h3>
-        <p class="small" style="margin-bottom:14px; color:var(--muted);">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.
+        <p class="small" style="margin-bottom:14px;">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.
 
         </p>
 
@@ -285,7 +876,7 @@
           </div>
         </div>
 
-        <p class="small" style="margin-top:12px; color:var(--muted);">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
+        <p class="small" style="margin-top:12px;">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
       </div>
     </section>
 
@@ -293,7 +884,7 @@
     <section id="gallery" aria-labelledby="gallery-heading">
       <div class="container">
         <h3 id="gallery-heading">Through the Porthole</h3>
-        <p class="small" style="color:var(--muted);">A glimpse of our space, the view from the deck, and the plates that define us.</p>
+        <p class="small">A glimpse of our space, the view from the deck, and the plates that define us.</p>
         <div class="gallery" style="margin-top:12px;">
           <!-- Replace with actual gallery images -->
           <img src="static/img/Themainrestarant.jpg" alt="View from the deck at The Nautical Mile" />
@@ -307,12 +898,12 @@
     <!-- RESERVATIONS -->
     <section id="reservations" aria-labelledby="reservations-heading">
       <div class="container" style="display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start;">
-        <div>
+        <div class="glass-box">
           <h3 id="reservations-heading">Book Your Berth</h3>
-          <p class="small" style="color:var(--muted);">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
+          <p class="small">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
 
           <h4 style="margin-top:16px;">Private Voyages & Events</h4>
-          <p class="small" style="color:var(--muted);">
+          <p class="small">
             Looking for the ideal spot for birthdays, anniversaries, or corporate gatherings? Tell our events team the size and style of your event and we’ll chart the perfect course.
           </p>
         </div>
@@ -346,7 +937,7 @@
 
             <button type="submit">Request Reservation</button>
 
-            <p class="small" style="margin-top:10px; color:var(--muted);">You’ll receive a confirmation email once your reservation is processed. For urgent bookings, please call us. But please remember this is a fictonal table as its a fictonal restaurant.</p>
+            <p class="small" style="margin-top:10px;">You'll receive a confirmation email once your reservation is processed. For urgent bookings, please call us. But please remember this is a fictional table as it's a fictional restaurant.</p>
           </form>
         </aside>
       </div>
@@ -356,22 +947,24 @@
     <section id="events" aria-labelledby="events-heading">
       <div class="container">
         <h3 id="events-heading">On the Horizon</h3>
-        <p class="small" style="color:var(--muted);">From live music nights to seasonal festivals, there’s always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
+        <div class="glass-box">
+          <p class="small">From live music nights to seasonal festivals, there's always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
 
-        <ul style="padding-left:18px; color:var(--muted); margin-top:12px;">
-          <li><strong>Friday Fun Sessions</strong> — Bounty Bingo, relaxed vibes.</li>
-          <li><strong>Sunday Harbour Roast</strong> — weekly roast & family-friendly menu.</li>
-          <li><strong>Seasonal Seafood Feast</strong> — For VIP's only, celebrating the catch of the day every season!</li>
-        </ul>
+          <ul style="padding-left:18px; margin-top:12px;">
+            <li><strong>Friday Fun Sessions</strong> — Bounty Bingo, relaxed vibes.</li>
+            <li><strong>Sunday Harbour Roast</strong> — weekly roast & family-friendly menu.</li>
+            <li><strong>Seasonal Seafood Feast</strong> — For VIPs only, celebrating the catch of the day every season!</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
       <div class="container" style="display:grid; grid-template-columns: 1fr 320px; gap:22px; align-items:start;">
-        <div>
+        <div class="glass-box">
           <h3 id="contact-heading">Drop Anchor Here</h3>
-          <p class="small" style="color:var(--muted);">
+          <p class="small">
             Find us at Ipswich Waterfront — a short walk from the station. For directions, dietary info, or event enquiries, reach out below.
           </p>
 
@@ -383,13 +976,13 @@
           </p>
 
           <p>
-            <strong>Phone:</strong> <a href="tel:+441234567890">+44 1234 567 890</a><br />
-            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk">hello@thenauticalmile.co.uk</a>
+            <strong>Phone:</strong> <a href="tel:+441234567890" style="color: rgba(255, 255, 255, 0.95);">+44 1234 567 890</a><br />
+            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk" style="color: rgba(255, 255, 255, 0.95);">hello@thenauticalmile.co.uk</a>
           </p>
         </div>
 
-        <aside style="background:#fff; padding:14px; border-radius:10px; box-shadow:0 10px 30px rgba(3,44,69,0.04);">
-          <h4 style="margin-top:0;">Send a Message in a Bottle</h4>
+        <aside class="form">
+          <h4 style="margin-top:0; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">Send a Message in a Bottle</h4>
           <form method="post" action="/contact">
             <label for="c-name">Name</label>
             <input id="c-name" name="name" type="text" required />
