@@ -824,6 +824,28 @@
   <div style="position: fixed; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%); top: 5%; right: 15%; pointer-events: none; z-index: 0; animation: lensFlare 10s ease-in-out infinite; filter: blur(3px);"></div>
   <div style="position: fixed; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 60%); bottom: 10%; right: 20%; pointer-events: none; z-index: 0; animation: lensFlare 12s ease-in-out infinite 2s; filter: blur(3px);"></div>
   
+  <!-- Swimming Fish -->
+  <div style="position: fixed; font-size: 32px; top: 25%; left: -60px; pointer-events: none; z-index: 1; animation: swimRight1 25s linear infinite; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐟</div>
+  <div style="position: fixed; font-size: 28px; top: 55%; right: -60px; pointer-events: none; z-index: 1; animation: swimLeft1 30s linear infinite; filter: drop-shadow(0 4px 8px rgba(74, 222, 128, 0.4)); transform: scaleX(-1);">🐠</div>
+  <div style="position: fixed; font-size: 36px; top: 75%; left: -70px; pointer-events: none; z-index: 1; animation: swimRight2 35s linear infinite 5s; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐡</div>
+  <div style="position: fixed; font-size: 30px; top: 40%; right: -65px; pointer-events: none; z-index: 1; animation: swimLeft2 28s linear infinite 8s; filter: drop-shadow(0 4px 8px rgba(74, 222, 128, 0.4)); transform: scaleX(-1);">🐟</div>
+  <div style="position: fixed; font-size: 24px; top: 65%; left: -55px; pointer-events: none; z-index: 1; animation: swimRight3 32s linear infinite 12s; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐠</div>
+  
+  <!-- Water Splashes -->
+  <div style="position: fixed; width: 120px; height: 120px; top: 15%; left: 20%; pointer-events: none; z-index: 0; animation: splash1 8s ease-in-out infinite;">
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(34, 211, 238, 0.15) 40%, transparent 70%); animation: ripple1 3s ease-out infinite;"></div>
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(34, 211, 238, 0.1) 40%, transparent 70%); animation: ripple1 3s ease-out infinite 0.5s;"></div>
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(34, 211, 238, 0.08) 40%, transparent 70%); animation: ripple1 3s ease-out infinite 1s;"></div>
+  </div>
+  <div style="position: fixed; width: 100px; height: 100px; top: 60%; right: 25%; pointer-events: none; z-index: 0; animation: splash2 10s ease-in-out infinite 3s;">
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(74, 222, 128, 0.15) 40%, transparent 70%); animation: ripple2 3.5s ease-out infinite;"></div>
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(74, 222, 128, 0.1) 40%, transparent 70%); animation: ripple2 3.5s ease-out infinite 0.6s;"></div>
+  </div>
+  <div style="position: fixed; width: 90px; height: 90px; bottom: 25%; left: 30%; pointer-events: none; z-index: 0; animation: splash3 12s ease-in-out infinite 6s;">
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(34, 211, 238, 0.12) 40%, transparent 70%); animation: ripple3 4s ease-out infinite;"></div>
+    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(34, 211, 238, 0.08) 40%, transparent 70%); animation: ripple3 4s ease-out infinite 0.7s;"></div>
+  </div>
+  
   <style>
     @keyframes floatBubble1 {
       0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.7; }
@@ -850,6 +872,76 @@
     @keyframes floatBubble6 {
       0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
       50% { transform: translate(20px, -40px) scale(1.3); opacity: 0.9; }
+    }
+    
+    /* Fish Swimming Animations */
+    @keyframes swimRight1 {
+      0% { left: -60px; top: 25%; transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(5deg); }
+      50% { transform: translateY(0) rotate(0deg); }
+      75% { transform: translateY(20px) rotate(-5deg); }
+      100% { left: calc(100% + 60px); top: 25%; transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes swimRight2 {
+      0% { left: -70px; top: 75%; transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(-30px) rotate(8deg); }
+      60% { transform: translateY(10px) rotate(-3deg); }
+      100% { left: calc(100% + 70px); top: 75%; transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes swimRight3 {
+      0% { left: -55px; top: 65%; transform: translateY(0) rotate(0deg); }
+      20% { transform: translateY(15px) rotate(-6deg); }
+      50% { transform: translateY(-10px) rotate(4deg); }
+      80% { transform: translateY(5px) rotate(-2deg); }
+      100% { left: calc(100% + 55px); top: 65%; transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes swimLeft1 {
+      0% { right: -60px; top: 55%; transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(20px) rotate(-5deg); }
+      50% { transform: translateY(0) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(5deg); }
+      100% { right: calc(100% + 60px); top: 55%; transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes swimLeft2 {
+      0% { right: -65px; top: 40%; transform: translateY(0) rotate(0deg); }
+      30% { transform: translateY(25px) rotate(-7deg); }
+      70% { transform: translateY(-20px) rotate(6deg); }
+      100% { right: calc(100% + 65px); top: 40%; transform: translateY(0) rotate(0deg); }
+    }
+    
+    /* Water Splash Ripples */
+    @keyframes ripple1 {
+      0% { transform: scale(0.3); opacity: 0.8; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    
+    @keyframes ripple2 {
+      0% { transform: scale(0.4); opacity: 0.7; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    
+    @keyframes ripple3 {
+      0% { transform: scale(0.35); opacity: 0.75; }
+      100% { transform: scale(2.1); opacity: 0; }
+    }
+    
+    @keyframes splash1 {
+      0%, 100% { opacity: 0; }
+      10%, 90% { opacity: 1; }
+    }
+    
+    @keyframes splash2 {
+      0%, 100% { opacity: 0; }
+      15%, 85% { opacity: 1; }
+    }
+    
+    @keyframes splash3 {
+      0%, 100% { opacity: 0; }
+      12%, 88% { opacity: 1; }
     }
   </style>
 
