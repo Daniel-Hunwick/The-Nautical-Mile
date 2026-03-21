@@ -1,25 +1,446 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Nautical Mile | Our Staff</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Staff — The Nautical Mile</title>
+  <meta name="description" content="Meet the dedicated team at The Nautical Mile — Ipswich waterfront dining.">
   <style>
-    .container {
-      max-width: 800px;
+    :root{
+      --aero-blue: #00a8ff;
+      --aero-cyan: #4dd0e1;
+      --aero-green: #00e676;
+      --aero-lime: #7cf05a;
+      --aero-white: #ffffff;
+      --glass-white: rgba(255, 255, 255, 0.85);
+      --glass-blue: rgba(100, 200, 255, 0.25);
+      --maxWidth: 1100px;
+      --radius: 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.5) 0%, transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(74, 222, 128, 0.4) 0%, transparent 48%),
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+        radial-gradient(ellipse at 40% 60%, rgba(100, 200, 255, 0.25), transparent),
+        radial-gradient(ellipse at 70% 40%, rgba(74, 222, 128, 0.2), transparent),
+        linear-gradient(135deg, #38bdf8 0%, #22d3ee 15%, #10b981 30%, #14b8a6 45%, #06b6d4 60%, #22d3ee 75%, #0284c7 90%, #10b981 100%);
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      animation: backgroundShift 12s ease infinite alternate, ripple 8s ease-in-out infinite;
+    }
+    
+    @keyframes backgroundShift {
+      0% { filter: hue-rotate(0deg) brightness(1) saturate(1.2); }
+      100% { filter: hue-rotate(15deg) brightness(1.1) saturate(1.4); }
+    }
+    
+    @keyframes ripple {
+      0%, 100% { background-size: 100% 100%; }
+      50% { background-size: 105% 105%; }
+    }
+    
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body::before {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.5), 
+        rgba(34, 211, 238, 0.3) 30%, 
+        rgba(74, 222, 128, 0.2) 50%, 
+        transparent 75%);
+      top: -120px;
+      right: -120px;
+      animation: float1 18s ease-in-out infinite;
+      box-shadow: inset -25px -25px 70px rgba(255, 255, 255, 0.5),
+                  inset 10px 10px 40px rgba(34, 211, 238, 0.3),
+                  0 0 120px rgba(34, 211, 238, 0.5),
+                  0 0 200px rgba(74, 222, 128, 0.3);
+      filter: blur(1px);
+    }
+    
+    body::after {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.45), 
+        rgba(74, 222, 128, 0.3) 30%, 
+        rgba(34, 211, 238, 0.2) 50%, 
+        transparent 75%);
+      bottom: -100px;
+      left: -100px;
+      animation: float2 22s ease-in-out infinite;
+      box-shadow: inset -20px -20px 60px rgba(255, 255, 255, 0.5),
+                  inset 8px 8px 35px rgba(74, 222, 128, 0.3),
+                  0 0 100px rgba(74, 222, 128, 0.5),
+                  0 0 180px rgba(34, 211, 238, 0.3);
+      filter: blur(1px);
+    }
+    
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-50px, 50px) scale(1.1); }
+      66% { transform: translate(30px, -30px) scale(0.9); }
+    }
+    
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, -40px) scale(1.15); }
+    }
+
+    header{
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0.5) 100%);
+      backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+      -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
+      border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      padding: 18px 16px;
+      position: sticky;
+      top:0;
+      z-index: 20;
+      box-shadow: 0 10px 40px rgba(34, 211, 238, 0.4),
+                  0 0 80px rgba(74, 222, 128, 0.3),
+                  0 0 120px rgba(34, 211, 238, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.4);
+      position: relative;
+      animation: headerGlow 5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes headerGlow {
+      0% { box-shadow: 0 10px 40px rgba(34, 211, 238, 0.4), 0 0 80px rgba(74, 222, 128, 0.3), 0 0 120px rgba(34, 211, 238, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.7), inset 0 -2px 0 rgba(255, 255, 255, 0.4); }
+      100% { box-shadow: 0 10px 40px rgba(34, 211, 238, 0.5), 0 0 100px rgba(74, 222, 128, 0.4), 0 0 150px rgba(34, 211, 238, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(255, 255, 255, 0.5); }
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .container{
+      width:95%;
+      max-width: var(--maxWidth);
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .brand img{
+      height:48px; 
+      width:auto; 
+      display:block; 
+      border-radius:14px; 
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
+      padding:10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
+                  0 0 40px rgba(34, 211, 238, 0.3),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.9),
+                  inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.5px;
+      font-weight:700;
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 25%, #a5f3fc 50%, #67e8f9 75%, #5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 3px 12px rgba(34, 211, 238, 0.6));
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      0% { filter: drop-shadow(0 3px 12px rgba(34, 211, 238, 0.6)); }
+      100% { filter: drop-shadow(0 4px 20px rgba(74, 222, 128, 0.8)); }
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:8px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+
+    nav a{
+      color: #fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      padding: 10px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    nav a:hover{
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(74, 222, 128, 0.3) 50%,
+        rgba(34, 211, 238, 0.3) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4),
+                  0 0 30px rgba(74, 222, 128, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    main {
+      padding: 48px 0;
+      position: relative;
+    }
+
+    .page-header{
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.7) 0%, 
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.6) 100%);
+      padding: 36px;
+      border-radius: 32px;
+      backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
+      box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35),
+                  0 0 100px rgba(74, 222, 128, 0.25),
+                  0 0 150px rgba(34, 211, 238, 0.15),
+                  inset 0 3px 0 rgba(255, 255, 255, 0.8),
+                  inset 0 -3px 0 rgba(255, 255, 255, 0.4);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      animation: heroGlow 6s ease-in-out infinite alternate;
+      margin-bottom: 32px;
+    }
+    
+    @keyframes heroGlow {
+      0% { box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35), 0 0 100px rgba(74, 222, 128, 0.25), 0 0 150px rgba(34, 211, 238, 0.15), inset 0 3px 0 rgba(255, 255, 255, 0.8), inset 0 -3px 0 rgba(255, 255, 255, 0.4); }
+      100% { box-shadow: 0 15px 50px rgba(74, 222, 128, 0.4), 0 0 120px rgba(34, 211, 238, 0.3), 0 0 180px rgba(74, 222, 128, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.9), inset 0 -3px 0 rgba(255, 255, 255, 0.5); }
+    }
+    
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin:0 0 16px 0; 
+      font-size:44px; 
+      background: linear-gradient(135deg, #fff 0%, #e0f2fe 25%, #a5f3fc 40%, #67e8f9 60%, #5eead4 80%, #6ee7b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 5px 15px rgba(34, 211, 238, 0.5));
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .intro {
+      font-size: 18px;
+      color: #0c4a6e;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .staff-member {
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.7) 0%, 
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.6) 100%);
+      padding: 28px;
+      border-radius: 24px;
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 10px 40px rgba(34, 211, 238, 0.3),
+                  0 0 80px rgba(74, 222, 128, 0.2),
+                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
+                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .staff-member::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .staff-member h2 {
+      margin: 0 0 12px 0;
+      font-size: 26px;
+      color: #0c4a6e;
+      font-weight: 700;
+    }
+
+    .staff-member p {
+      margin: 0;
+      font-size: 16px;
+      color: #164e63;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: #fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:16px;
+      padding: 12px 24px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.2) 100%);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                  inset 0 -1px 0 rgba(255, 255, 255, 0.2);
+      display: inline-block;
+    }
+
+    .back-link a:hover {
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(74, 222, 128, 0.3) 50%,
+        rgba(34, 211, 238, 0.3) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4),
+                  0 0 30px rgba(74, 222, 128, 0.3);
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Meet our Staff</h1>
-    <p> At the Nautical Mile our crew is at the hull of the ship, prepearing your dish! Weather it be a Salt Crusted Monkfish or a Sticky Toffee Pudding, our staff will cook it with expert presision so can come back to the depths again!</strong>.</p>
-    <p>TEST TEXT - DELETE LATER</p>
-    <a href="#">Link here</a>
-  </div>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <img src="static/img/Logonowords-removebg.png" alt="Anchor Logo">
+          <h1>The Nautical Mile</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="ourstaff.html">Our Staff</a></li>
+            <li><a href="reserve.html">Reserve</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h1>Meet Our Staff</h1>
+        <p class="intro">Our dedicated team at <strong>The Nautical Mile</strong> is committed to providing you with an exceptional dining experience. Each member brings passion, expertise, and a love for fresh seafood and coastal cuisine.</p>
+      </div>
+      
+      <div class="staff-member">
+        <h2>Captain James Morrison — Executive Chef</h2>
+        <p>With over 15 years of culinary experience, Chef James leads our kitchen with creativity and precision. His specialty is transforming fresh, local catches into unforgettable dishes that celebrate the flavors of the sea.</p>
+      </div>
+
+      <div class="staff-member">
+        <h2>Marina Chen — Head Server</h2>
+        <p>Marina ensures every guest feels welcome from the moment they walk through our doors. Her attention to detail and warm hospitality have made her a favorite among our regular patrons.</p>
+      </div>
+
+      <div class="staff-member">
+        <h2>Thomas "Tommy" Blake — Sous Chef</h2>
+        <p>Tommy's expertise in seafood preparation and his innovative approach to classic dishes help keep our menu exciting and delicious. He works closely with local fishermen to source the finest ingredients.</p>
+      </div>
+
+      <div class="staff-member">
+        <h2>Sarah Williams — Restaurant Manager</h2>
+        <p>Sarah oversees our daily operations with efficiency and grace. Her commitment to excellence ensures that every aspect of your visit runs smoothly, from reservations to your final course.</p>
+      </div>
+
+      <div class="back-link">
+        <a href="index.html">← Return to Home</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
 
