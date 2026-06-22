@@ -320,6 +320,61 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 32px;
+    }
+
+    .testimonial {
+      background: var(--light-gray);
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      font-size: 48px;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      opacity: 0.5;
+    }
+
+    .testimonial:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-color: var(--gold);
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      color: var(--dark-text);
+      line-height: 1.8;
+      margin: 12px 0 20px 0;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .testimonial-role {
+      font-size: 13px;
+      color: var(--gold);
+      margin: 4px 0 0 0;
+      letter-spacing: 0.5px;
+    }
+
     /* Reservations Grid */
     .reservations-grid {
       display: grid;
@@ -575,6 +630,50 @@
           <img src="static/img/scott-greer-81yZExqt-J8-unsplash.jpg" alt="Seafood dish on a wooden table" />
           <img src="static/img/anthony-camp-0dHsuLpukGw-unsplash.jpg" alt="Interior seating with waterfront view" />
           <img src="static/img/stella-he-hM6MSq__M0Q-unsplash.jpg" alt="Evening lights along Ipswich waterfront" />
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" aria-labelledby="testimonials-heading">
+        <h3 id="testimonials-heading">What Our Guests Say</h3>
+        <p class="small">Real experiences from those who've dined with us.</p>
+        
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <p class="testimonial-text">The freshest seafood I've ever tasted! The ambiance overlooking the waterfront is simply magical. We'll definitely be coming back.</p>
+            <p class="testimonial-author">Sarah Mitchell</p>
+            <p class="testimonial-role">Regular Guest</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">Exceptional service paired with outstanding culinary artistry. Chef Longi's risotto was absolutely divine. Highly recommended!</p>
+            <p class="testimonial-author">James & Patricia</p>
+            <p class="testimonial-role">Anniversary Dinner</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">What a gem! The attention to detail, from the presentation to the flavors, made our celebration unforgettable. Marina's hospitality was wonderful.</p>
+            <p class="testimonial-author">Eleanor Thompson</p>
+            <p class="testimonial-role">Birthday Celebration</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">A true waterfront treasure. Every dish tells a story of the sea. The team's passion for excellence really shines through in every aspect.</p>
+            <p class="testimonial-author">David Chen</p>
+            <p class="testimonial-role">Food Critic</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">Brought my parents for their anniversary and they haven't stopped talking about it. The reservation process was seamless thanks to Mariella!</p>
+            <p class="testimonial-author">Rebecca Norton</p>
+            <p class="testimonial-role">Family Celebration</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">Professional, warm, and genuinely passionate about their craft. This is where locals come for special occasions. Worth every penny!</p>
+            <p class="testimonial-author">Marcus Wright</p>
+            <p class="testimonial-role">Loyal Customer</p>
+          </div>
         </div>
       </section>
 
