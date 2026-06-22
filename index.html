@@ -5,171 +5,55 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Nautical Mile — Ipswich Waterfront</title>
   <meta name="description" content="The Nautical Mile — Ipswich waterfront dining. Anchored in flavour, where the tide meets the table.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --aero-blue: #00a8ff;
-      --aero-cyan: #4dd0e1;
-      --aero-green: #00e676;
-      --aero-lime: #7cf05a;
-      --aero-white: #ffffff;
-      --glass-white: rgb(255, 255, 255);
-      --glass-blue: rgb(255, 255, 255);
+      --navy: #1F3A5F;
+      --ocean: #2C5282;
+      --cream: #FAFAF8;
+      --gold: #8B6F47;
+      --light-gray: #F5F3EF;
+      --dark-text: #2D3E50;
+      --border: #D4C4B0;
       --maxWidth: 1100px;
-      --radius: 20px;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-     }
+      font-family: "Lora", Georgia, serif;
+      color: var(--dark-text);
+    }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      background: 
-        radial-gradient(circle at 20% 80%, rgb(34, 211, 238, 0.6) 0%, transparent 45%),
-        radial-gradient(circle at 80% 20%, rgb(74, 222, 128, 0.5) 0%, transparent 48%),
-        radial-gradient(circle at 50% 10%, rgba(100, 200, 255, 0.35) 0%, transparent 30%),
-        radial-gradient(ellipse at 40% 60%, rgb(16, 185, 129, 0.3), transparent),
-        radial-gradient(ellipse at 70% 40%, rgb(34, 211, 238, 0.25), transparent),
-        linear-gradient(135deg, #38bdf8 0%, #22d3ee 15%, #10b981 30%, #14b8a6 45%, #06b6d4 60%, #22d3ee 75%, #0284c7 90%, #10b981 100%);
-      background-size: 100% 100%;
-      background-attachment: fixed;
+      background: var(--cream);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.6;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
-      animation: backgroundShift 12s ease infinite alternate, ripple 8s ease-in-out infinite;
-    }
-    
-    @keyframes backgroundShift {
-      0% { filter: hue-rotate(0deg) brightness(1) saturate(1.2); }
-      100% { filter: hue-rotate(15deg) brightness(1.1) saturate(1.4); }
-    }
-    
-    @keyframes ripple {
-      0%, 100% { background-size: 100% 100%; }
-      50% { background-size: 105% 105%; }
-    }
-    
-    /* Floating bubbles */
-    body::before, body::after {
-      content: '';
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    
-    body::before {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle at 30% 30%, 
-        rgba(255, 255, 255, 0.5), 
-        rgba(34, 211, 238, 0.3) 30%, 
-        rgba(74, 222, 128, 0.2) 50%, 
-        transparent 75%);
-      top: -120px;
-      right: -120px;
-      animation: float1 18s ease-in-out infinite;
-      box-shadow: inset -25px -25px 70px rgba(255, 255, 255, 0.5),
-                  inset 10px 10px 40px rgba(34, 211, 238, 0.3),
-                  0 0 120px rgba(34, 211, 238, 0.5),
-                  0 0 200px rgba(74, 222, 128, 0.3);
-      filter: blur(1px);
-    }
-    
-    body::after {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle at 30% 30%, 
-        rgba(255, 255, 255, 0.45), 
-        rgba(74, 222, 128, 0.3) 30%, 
-        rgba(34, 211, 238, 0.2) 50%, 
-        transparent 75%);
-      bottom: -100px;
-      left: -100px;
-      animation: float2 22s ease-in-out infinite;
-      box-shadow: inset -20px -20px 60px rgba(255, 255, 255, 0.5),
-                  inset 8px 8px 35px rgba(74, 222, 128, 0.3),
-                  0 0 100px rgba(74, 222, 128, 0.5),
-                  0 0 180px rgba(34, 211, 238, 0.3);
-      filter: blur(1px);
-    }
-    
-    @keyframes float1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-50px, 50px) scale(1.1); }
-      66% { transform: translate(30px, -30px) scale(0.9); }
-    }
-    
-    @keyframes float2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(60px, -40px) scale(1.15); }
-    }
-    
-    /* Lens flare effect */
-    @keyframes lensFlare {
-      0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-      50% { opacity: 0.7; transform: scale(1.3) rotate(180deg); }
-    }
-    
-    /* Water droplet shimmer */
-    @keyframes dropletShimmer {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.8; }
     }
 
-    /* Glossy glass header */
     header{
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.6) 0%, 
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(255, 255, 255, 0.5) 100%);
-      backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
-      -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.1);
-      border-bottom: 3px solid rgba(255, 255, 255, 0.5);
-      color: #fff;
-      padding: 18px 16px;
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      color: var(--cream);
+      padding: 20px 16px;
       position: sticky;
       top:0;
       z-index: 20;
-      box-shadow: 0 10px 40px rgba(34, 211, 238, 0.4),
-                  0 0 80px rgba(74, 222, 128, 0.3),
-                  0 0 120px rgba(34, 211, 238, 0.2),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -2px 0 rgba(255, 255, 255, 0.4);
-      position: relative;
-      animation: headerGlow 5s ease-in-out infinite alternate;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    
-    @keyframes headerGlow {
-      0% { box-shadow: 0 10px 40px rgba(34, 211, 238, 0.4), 0 0 80px rgba(74, 222, 128, 0.3), 0 0 120px rgba(34, 211, 238, 0.2), inset 0 2px 0 rgba(255, 255, 255, 0.7), inset 0 -2px 0 rgba(255, 255, 255, 0.4); }
-      100% { box-shadow: 0 10px 40px rgba(34, 211, 238, 0.5), 0 0 100px rgba(74, 222, 128, 0.4), 0 0 150px rgba(34, 211, 238, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(255, 255, 255, 0.5); }
-    }
-    
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
-    .container{
-      width:95%;
+
+    .nav-container{
       max-width: var(--maxWidth);
       margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-    .nav{
+      padding: 0 16px;
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
     }
+
     .brand{
       display:flex;
       gap:12px;
@@ -178,781 +62,393 @@
     .brand img{
       height:48px; 
       width:auto; 
-      display:block; 
-      border-radius:14px; 
-      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
-      padding:10px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
-                  0 0 40px rgba(34, 211, 238, 0.3),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.9),
-                  inset 0 -2px 4px rgba(0, 0, 0, 0.05);
-      position: relative;
-      overflow: hidden;
+      display:block;
+      border-radius:4px;
     }
-    .brand img::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-      transform: rotate(45deg);
-      animation: shimmer 3s infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-    
-    .brand h1{
+    .brand-text h1, .brand-text div{
       margin:0;
-      font-size:20px;
+      font-size:18px;
       letter-spacing:0.5px;
-      font-weight:700;
-      background: linear-gradient(135deg, #fff 0%, #e0f2fe 25%, #a5f3fc 50%, #67e8f9 75%, #5eead4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 3px 12px rgba(34, 211, 238, 0.6));
-      animation: textGlow 3s ease-in-out infinite alternate;
+      font-weight:600;
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+    }
+    .brand-text div{
+      font-size:12px;
+      font-weight:400;
+      font-family: "Lora", serif;
+      color: rgba(250, 250, 248, 0.8);
+      letter-spacing: 0.5px;
     }
     
-    @keyframes textGlow {
-      0% { filter: drop-shadow(0 3px 12px rgba(34, 211, 238, 0.6)); }
-      100% { filter: drop-shadow(0 4px 20px rgba(74, 222, 128, 0.8)); }
-    }
     nav ul{
       list-style:none;
       display:flex;
-      gap:8px;
+      gap:24px;
       margin:0;
       padding:0;
       align-items:center;
+      flex-wrap: wrap;
     }
     nav a{
-      color: #fff;
+      color: var(--cream);
       text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      padding: 10px 18px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.25) 0%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(255, 255, 255, 0.2) 100%);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    nav a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
+      font-weight:500;
+      font-size:13px;
+      letter-spacing: 0.5px;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
     }
     nav a:hover{
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(74, 222, 128, 0.3) 50%,
-        rgba(34, 211, 238, 0.3) 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.4),
-                  0 0 30px rgba(74, 222, 128, 0.3),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.6),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      color: var(--gold);
+      border-bottom-color: var(--gold);
     }
+
+    .container{
+      max-width: var(--maxWidth);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    main {
+      padding: 60px 0;
+    }
+
     .hero{
-      padding: 48px 0;
       display:flex;
-      gap:24px;
+      gap:48px;
       align-items:center;
-      position: relative;
-    }
-    
-    /* Decorative orbs */
-    .hero::before, .hero::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    
-    .hero::before {
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle at 30% 30%, 
-        rgba(255, 255, 255, 0.5), 
-        rgba(34, 211, 238, 0.3) 40%, 
-        transparent 70%);
-      top: 20%;
-      right: 10%;
-      animation: floatOrb1 15s ease-in-out infinite;
-      box-shadow: inset -10px -10px 30px rgba(255, 255, 255, 0.4),
-                  0 0 60px rgba(34, 211, 238, 0.4);
-    }
-    
-    .hero::after {
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle at 30% 30%, 
-        rgba(255, 255, 255, 0.4), 
-        rgba(74, 222, 128, 0.3) 40%, 
-        transparent 70%);
-      bottom: 10%;
-      left: 5%;
-      animation: floatOrb2 12s ease-in-out infinite;
-      box-shadow: inset -8px -8px 25px rgba(255, 255, 255, 0.4),
-                  0 0 50px rgba(74, 222, 128, 0.4);
-    }
-    
-    @keyframes floatOrb1 {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-      50% { transform: translate(20px, -20px) scale(1.2); opacity: 1; }
-    }
-    
-    @keyframes floatOrb2 {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-      50% { transform: translate(-15px, 15px) scale(1.1); opacity: 0.9; }
+      margin-bottom: 80px;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
     }
     
     .hero-left{
       flex:1;
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.7) 0%, 
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.6) 100%);
-      padding: 36px;
-      border-radius: 32px;
-      backdrop-filter: blur(25px) saturate(200%) brightness(1.15);
-      box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35),
-                  0 0 100px rgba(74, 222, 128, 0.25),
-                  0 0 150px rgba(34, 211, 238, 0.15),
-                  inset 0 3px 0 rgba(255, 255, 255, 0.8),
-                  inset 0 -3px 0 rgba(255, 255, 255, 0.4);
-      border: 3px solid rgba(255, 255, 255, 0.6);
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      animation: heroGlow 6s ease-in-out infinite alternate;
-    }
-    
-    @keyframes heroGlow {
-      0% { box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35), 0 0 100px rgba(74, 222, 128, 0.25), 0 0 150px rgba(34, 211, 238, 0.15), inset 0 3px 0 rgba(255, 255, 255, 0.8), inset 0 -3px 0 rgba(255, 255, 255, 0.4); }
-      100% { box-shadow: 0 15px 50px rgba(74, 222, 128, 0.4), 0 0 120px rgba(34, 211, 238, 0.3), 0 0 180px rgba(74, 222, 128, 0.2), inset 0 3px 0 rgba(255, 255, 255, 0.9), inset 0 -3px 0 rgba(255, 255, 255, 0.5); }
-    }
-    
-    .hero-left::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
-      pointer-events: none;
     }
     
     .eyebrow{ 
-      color: #10b981; 
-      font-weight:700; 
-      letter-spacing:2.5px; 
+      color: var(--gold); 
+      font-weight:600; 
+      letter-spacing:2px; 
       margin-bottom:12px;
       text-transform: uppercase;
-      font-size: 11px;
-      text-shadow: 0 0 20px rgba(16, 185, 129, 0.8),
-                   0 2px 4px rgba(0, 0, 0, 0.2);
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes glow {
-      from { text-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 2px 4px rgba(0, 0, 0, 0.2); }
-      to { text-shadow: 0 0 30px rgba(16, 185, 129, 1), 0 2px 4px rgba(0, 0, 0, 0.2); }
+      font-size: 12px;
     }
     
     .hero h2{ 
-      margin:0 0 16px 0; 
-      font-size:44px; 
-      background: linear-gradient(135deg, #fff 0%, #e0f2fe 25%, #a5f3fc 40%, #67e8f9 60%, #5eead4 80%, #6ee7b7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 5px 15px rgba(34, 211, 238, 0.5));
+      margin:0 0 24px 0; 
+      font-size:52px; 
+      color: var(--navy);
       font-weight: 700;
-      letter-spacing: -1px;
-      animation: titleShimmer 4s ease-in-out infinite alternate;
-      background-size: 200% 100%;
-    }
-    
-    @keyframes titleShimmer {
-      0% { 
-        background-position: 0% 50%;
-        filter: drop-shadow(0 5px 15px rgba(34, 211, 238, 0.5));
-      }
-      100% { 
-        background-position: 100% 50%;
-        filter: drop-shadow(0 5px 20px rgba(74, 222, 128, 0.7));
-      }
+      letter-spacing: -1.5px;
+      font-family: "Playfair Display", serif;
+      line-height: 1.2;
     }
     .lead{
-      color: rgba(255, 255, 255, 0.95); 
+      color: var(--dark-text); 
       max-width:62ch; 
-      margin-bottom:22px;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      margin-bottom:32px;
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
     .cta{
       display:inline-block;
-      background: linear-gradient(135deg, #22d3ee 0%, #10b981 30%, #14b8a6 60%, #6ee7b7 100%);
-      color: #fff;
-      padding:18px 36px;
-      border-radius:20px;
-      font-weight:700;
-      font-size: 16px;
+      background: var(--ocean);
+      color: var(--cream);
+      padding:16px 40px;
+      border-radius:2px;
+      font-weight:600;
+      font-size: 15px;
       text-decoration:none;
-      box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6),
-                  0 0 60px rgba(34, 211, 238, 0.4),
-                  0 0 100px rgba(74, 222, 128, 0.3),
-                  inset 0 3px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -3px 0 rgba(0, 0, 0, 0.15);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-      position: relative;
-      overflow: hidden;
-      animation: ctaPulse 3s ease-in-out infinite alternate;
+      box-shadow: 0 4px 12px rgba(44, 82, 130, 0.2);
+      transition: all 0.3s ease;
+      border: 2px solid var(--ocean);
+      letter-spacing: 0.5px;
     }
     
-    @keyframes ctaPulse {
-      0% { box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6), 0 0 60px rgba(34, 211, 238, 0.4), 0 0 100px rgba(74, 222, 128, 0.3), inset 0 3px 0 rgba(255, 255, 255, 0.7), inset 0 -3px 0 rgba(0, 0, 0, 0.15); }
-      100% { box-shadow: 0 12px 35px rgba(34, 211, 238, 0.7), 0 0 80px rgba(16, 185, 129, 0.5), 0 0 120px rgba(74, 222, 128, 0.4), inset 0 3px 0 rgba(255, 255, 255, 0.8), inset 0 -3px 0 rgba(0, 0, 0, 0.15); }
-    }
-    .cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
-      pointer-events: none;
-    }
     .cta:hover{
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6),
-                  0 0 70px rgba(34, 211, 238, 0.5),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+      background: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44, 82, 130, 0.3);
     }
+    
     .hero-right{
-      width:300px;
+      width:320px;
       text-align:center;
-      border-radius: 28px;
-      background: linear-gradient(135deg, 
-        rgba(255,255,255,0.65) 0%, 
-        rgba(255,255,255,0.4) 50%,
-        rgba(255,255,255,0.55) 100%);
-      backdrop-filter: blur(20px) saturate(180%);
-      padding:28px;
-      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.3),
-                  0 0 70px rgba(74, 222, 128, 0.2),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.8),
-                  inset 0 -2px 0 rgba(255, 255, 255, 0.4);
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      position: relative;
-      overflow: hidden;
     }
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    
     .logo-placeholder{
-      height:160px; 
+      height:280px; 
       display:flex; 
       align-items:center; 
       justify-content:center;
-      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent);
       position: relative;
+      margin-bottom: 20px;
     }
-    .logo-placeholder::before {
-      content: '';
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.3), transparent 70%);
-      border-radius: 50%;
-      animation: pulse 3s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
+    
     .logo-placeholder img{
       max-width:100%; 
       height:auto; 
-      display:block; 
-      filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.2))
-              drop-shadow(0 0 30px rgba(34, 211, 238, 0.4));
-      position: relative;
-      z-index: 1;
+      display:block;
+      max-height: 280px;
     }
 
     section{ 
-      padding:36px 0;
+      padding:80px 0;
       position: relative;
+      border-bottom: 1px solid var(--border);
     }
+    
+    section:last-of-type {
+      border-bottom: none;
+    }
+    
     h3{ 
-      background: linear-gradient(135deg, #fff 0%, #e0f2fe 40%, #a5f3fc 70%, #67e8f9 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--navy);
       margin-top:0;
-      font-size: 36px;
+      font-size: 40px;
       font-weight: 700;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
       letter-spacing: -1px;
-    }
-    .grid{
-      display:grid;
-      gap:18px;
+      font-family: "Playfair Display", serif;
+      margin-bottom: 24px;
     }
 
     /* About / Crew */
-    .about-grid{ grid-template-columns: 1fr 360px; display:grid; gap:24px; align-items:start; }
+    .about-grid{ 
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap:32px; 
+      align-items:start;
+    }
+    
+    .glass-box {
+      background: var(--light-gray);
+      padding: 40px;
+      border-left: 4px solid var(--gold);
+      color: var(--dark-text);
+    }
+    
+    .glass-box h4{
+      color: var(--navy);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      font-family: "Playfair Display", serif;
+    }
+    
+    .glass-box h4:first-child {
+      margin-top: 0;
+    }
+    
+    .glass-box p, .glass-box ul{
+      color: var(--dark-text);
+      margin: 0 0 16px 0;
+    }
+    
+    .glass-box ul li {
+      margin-bottom: 8px;
+    }
+    
+    .glass-box ul li strong{
+      color: var(--navy);
+      font-weight: 600;
+    }
 
     /* Menu */
-    .menu-grid{ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); display:grid; gap:16px; }
+    .menu-grid{ 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap:32px;
+    }
+    
     .menu-card{ 
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.7) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(255, 255, 255, 0.6) 100%);
-      backdrop-filter: blur(25px) saturate(200%) brightness(1.1);
-      padding:26px; 
-      border-radius:28px; 
-      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.3),
-                  0 0 80px rgba(74, 222, 128, 0.2),
-                  0 0 120px rgba(34, 211, 238, 0.15),
-                  inset 0 3px 0 rgba(255, 255, 255, 0.8),
-                  inset 0 -2px 0 rgba(255, 255, 255, 0.4);
-      border: 3px solid rgba(255, 255, 255, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
+      background: var(--light-gray);
+      padding:32px; 
+      border-left: 4px solid var(--gold);
+      transition: all 0.3s ease;
     }
-    .menu-card::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-      animation: cardShine 6s linear infinite;
-    }
-    @keyframes cardShine {
-      0% { transform: translate(-100%, -100%) rotate(45deg); }
-      100% { transform: translate(100%, 100%) rotate(45deg); }
-    }
-    .menu-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    
     .menu-card:hover{
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 15px 50px rgba(34, 211, 238, 0.35),
-                  0 0 80px rgba(74, 222, 128, 0.25),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.8),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
     }
+    
     .menu-card h4{ 
-      margin:0 0 16px 0; 
-      background: linear-gradient(135deg, #fff 0%, #e0f2fe 50%, #a5f3fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin:0 0 20px 0; 
+      color: var(--navy);
       font-size: 20px;
       font-weight: 700;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+      font-family: "Playfair Display", serif;
     }
+    
     .dish{ 
       display:flex; 
       justify-content:space-between; 
-      color: rgba(255, 255, 255, 0.9); 
-      padding:8px 0; 
-      border-bottom:1px solid rgba(255, 255, 255, 0.2);
+      color: var(--dark-text); 
+      padding:10px 0; 
+      border-bottom:1px solid var(--border);
       font-size: 14px;
+    }
+    
+    .dish strong {
+      color: var(--ocean);
+      font-weight: 600;
     }
 
     /* Gallery */
-    .gallery{ display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:12px; }
+    .gallery{ 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap:24px;
+    }
+    
     .gallery img{ 
       width:100%; 
-      height:140px; 
+      height:200px; 
       object-fit:cover; 
-      border-radius:20px; 
       display:block;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25),
-                  0 0 50px rgba(34, 211, 238, 0.3),
-                  inset 0 0 0 2px rgba(255, 255, 255, 0.4);
-      border: 3px solid rgba(255, 255, 255, 0.6);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
+    
     .gallery img:hover{
-      transform: scale(1.08) translateY(-4px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
-                  0 0 70px rgba(74, 222, 128, 0.4),
-                  inset 0 0 0 2px rgba(255, 255, 255, 0.6);
-      filter: brightness(1.05) saturate(1.2);
+      transform: scale(1.04);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
-    /* Reservations and contact */
+    /* Reservations Grid */
+    .reservations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* Forms */
     .form{
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(255, 255, 255, 0.5) 100%);
-      backdrop-filter: blur(20px) saturate(180%);
-      padding:28px;
-      border-radius:24px;
-      max-width:540px;
-      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.3),
-                  0 0 70px rgba(74, 222, 128, 0.2),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.5);
+      background: var(--light-gray);
+      padding:40px;
+      border-left: 4px solid var(--gold);
       position: relative;
-      overflow: hidden;
     }
-    .form::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    
     label{ 
       display:block; 
-      margin:12px 0 6px; 
+      margin:16px 0 8px; 
       font-weight:600; 
-      font-size:14px; 
-      color: rgba(255, 255, 255, 0.95);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      font-size:13px; 
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
+    
     input, textarea, select{ 
       width:100%; 
-      padding:12px 16px; 
-      border-radius:14px; 
-      border:2px solid rgba(255, 255, 255, 0.4); 
+      padding:12px 14px; 
+      border: 1px solid var(--border); 
       font-size:14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
-      backdrop-filter: blur(10px);
-      color: #333;
-      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.08),
-                  0 2px 8px rgba(34, 211, 238, 0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+      color: var(--dark-text);
+      font-family: inherit;
+      transition: all 0.3s ease;
     }
+    
     input:focus, textarea:focus, select:focus{
       outline: none;
-      border-color: rgba(16, 185, 129, 0.7);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2),
-                  0 0 20px rgba(74, 222, 128, 0.3),
-                  inset 0 2px 6px rgba(0, 0, 0, 0.05);
-      transform: translateY(-1px);
+      border-color: var(--ocean);
+      box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
     }
+    
     button[type="submit"]{ 
-      margin-top:18px; 
-      background: linear-gradient(135deg, #22d3ee 0%, #10b981 50%, #14b8a6 100%);
-      color:#fff; 
-      border:none; 
-      padding:16px 20px; 
-      border-radius:14px; 
+      margin-top:24px; 
+      background: var(--ocean);
+      color: var(--cream); 
+      border: 2px solid var(--ocean);
+      padding:14px 28px; 
       cursor:pointer; 
-      font-weight:700;
-      font-size: 15px;
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5),
-                  0 0 50px rgba(34, 211, 238, 0.3),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.6),
-                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-weight:600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
       width: 100%;
-      position: relative;
-      overflow: hidden;
+      font-family: inherit;
     }
-    button[type="submit"]::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    
     button[type="submit"]:hover{
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6),
-                  0 0 70px rgba(34, 211, 238, 0.5),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+      background: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
     }
 
     .footer{
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0.25) 50%,
-        rgba(255, 255, 255, 0.35) 100%);
-      backdrop-filter: blur(25px) saturate(180%);
-      border-top: 2px solid rgba(255, 255, 255, 0.4);
-      color:#fff;
-      padding:28px 0;
-      margin-top:48px;
-      box-shadow: 0 -10px 40px rgba(34, 211, 238, 0.2),
-                  0 0 60px rgba(74, 222, 128, 0.15),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.5),
-                  inset 0 -1px 0 rgba(255, 255, 255, 0.3);
-      position: relative;
-    }
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-      pointer-events: none;
-    }
-    .small{ 
-      font-size:13px; 
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      background: var(--navy);
+      color: var(--cream);
+      padding:48px 0;
+      border-top: 3px solid var(--gold);
+      text-align: center;
     }
     
-    /* Glass boxes for content sections */
-    .glass-box{
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.35) 50%,
-        rgba(255, 255, 255, 0.5) 100%);
-      backdrop-filter: blur(20px) saturate(180%);
-      padding:28px;
-      border-radius:24px;
-      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.25),
-                  0 0 70px rgba(74, 222, 128, 0.15),
-                  inset 0 2px 0 rgba(255, 255, 255, 0.7),
-                  inset 0 -2px 0 rgba(255, 255, 255, 0.3);
-      border: 2px solid rgba(255, 255, 255, 0.5);
-      color: rgba(255, 255, 255, 0.95);
-      position: relative;
-      overflow: hidden;
+    .small{ 
+      font-size:13px; 
+      color: rgba(45, 62, 80, 0.8);
+      margin: 0 0 16px 0;
     }
-    .glass-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
-      pointer-events: none;
+
+    .contact-info {
+      color: var(--dark-text);
     }
-    .glass-box h4{
-      background: linear-gradient(135deg, #fff 0%, #e0f2fe 50%, #a5f3fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-top: 0;
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-      font-weight: 700;
+
+    .contact-info strong {
+      color: var(--navy);
+      font-weight: 600;
     }
-    .glass-box p, .glass-box ul{
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .contact-info a {
+      color: var(--ocean);
+      text-decoration: underline;
     }
-    .glass-box ul li strong{
-      color: #fff;
+
+    .contact-info a:hover {
+      color: var(--navy);
+    }
+
+    strong {
+      color: var(--navy);
     }
     
     @media (max-width:880px){
       .about-grid{ grid-template-columns: 1fr; }
-      nav ul{ display:none; }
-      .hero{ flex-direction: column; }
-      .hero-right{ width: 100%; }
+      .reservations-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul{ 
+        gap: 12px;
+        font-size: 12px;
+      }
+      .hero{ 
+        flex-direction: column;
+        gap: 32px;
+        padding: 40px 0;
+        margin-bottom: 40px;
+      }
+      .hero-right{ width: 100%; max-width: 300px; }
+      h3 { font-size: 32px; }
+      .hero h2 { font-size: 36px; }
     }
   </style>
 </head>
 <body>
-  <!-- Decorative floating bubbles -->
-  <div style="position: fixed; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(34, 211, 238, 0.35) 40%, rgba(74, 222, 128, 0.2) 60%, transparent 75%); top: 15%; left: 8%; pointer-events: none; z-index: 0; box-shadow: inset -12px -12px 35px rgba(255, 255, 255, 0.6), inset 6px 6px 20px rgba(34, 211, 238, 0.3), 0 0 70px rgba(34, 211, 238, 0.5), 0 0 120px rgba(74, 222, 128, 0.3); animation: floatBubble1 16s ease-in-out infinite; filter: blur(0.5px);"></div>
-  <div style="position: fixed; width: 85px; height: 85px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), rgba(74, 222, 128, 0.35) 40%, rgba(34, 211, 238, 0.2) 60%, transparent 75%); top: 60%; right: 12%; pointer-events: none; z-index: 0; box-shadow: inset -10px -10px 30px rgba(255, 255, 255, 0.6), inset 5px 5px 18px rgba(74, 222, 128, 0.3), 0 0 60px rgba(74, 222, 128, 0.5), 0 0 100px rgba(34, 211, 238, 0.3); animation: floatBubble2 20s ease-in-out infinite; filter: blur(0.5px);"></div>
-  <div style="position: fixed; width: 130px; height: 130px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(34, 211, 238, 0.3) 40%, rgba(74, 222, 128, 0.2) 60%, transparent 75%); bottom: 20%; left: 15%; pointer-events: none; z-index: 0; box-shadow: inset -15px -15px 40px rgba(255, 255, 255, 0.5), inset 7px 7px 22px rgba(34, 211, 238, 0.3), 0 0 80px rgba(34, 211, 238, 0.4), 0 0 140px rgba(74, 222, 128, 0.3); animation: floatBubble3 23s ease-in-out infinite; filter: blur(0.5px);"></div>
-   <!-- Additional micro bubbles -->
-  <div style="position: fixed; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), rgba(34, 211, 238, 0.4) 50%, transparent 70%); top: 35%; right: 25%; pointer-events: none; z-index: 0; box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.7), 0 0 40px rgba(34, 211, 238, 0.6); animation: floatBubble4 14s ease-in-out infinite;"></div>
-  <div style="position: fixed; width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.65), rgba(74, 222, 128, 0.4) 50%, transparent 70%); bottom: 45%; left: 20%; pointer-events: none; z-index: 0; box-shadow: inset -6px -6px 18px rgba(255, 255, 255, 0.7), 0 0 45px rgba(74, 222, 128, 0.6); animation: floatBubble5 17s ease-in-out infinite;"></div>
-  <div style="position: fixed; width: 35px; height: 35px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.75), rgba(34, 211, 238, 0.45) 50%, transparent 70%); top: 70%; left: 40%; pointer-events: none; z-index: 0; box-shadow: inset -4px -4px 12px rgba(255, 255, 255, 0.8), 0 0 35px rgba(34, 211, 238, 0.7); animation: floatBubble6 19s ease-in-out infinite;"></div>
-   <!-- Lens flare elements -->
-  <div style="position: fixed; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%); top: 5%; right: 15%; pointer-events: none; z-index: 0; animation: lensFlare 10s ease-in-out infinite; filter: blur(3px);"></div>
-  <div style="position: fixed; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 60%); bottom: 10%; right: 20%; pointer-events: none; z-index: 0; animation: lensFlare 12s ease-in-out infinite 2s; filter: blur(3px);"></div>
-  
-   <!-- Swimming Fish -->
-  <div style="position: fixed; font-size: 32px; top: 25%; left: -60px; pointer-events: none; z-index: 1; animation: swimRight1 25s linear infinite; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐟</div>
-  <div style="position: fixed; font-size: 28px; top: 55%; right: -60px; pointer-events: none; z-index: 1; animation: swimLeft1 30s linear infinite; filter: drop-shadow(0 4px 8px rgba(74, 222, 128, 0.4)); transform: scaleX(-1);">🐠</div>
-  <div style="position: fixed; font-size: 36px; top: 75%; left: -70px; pointer-events: none; z-index: 1; animation: swimRight2 35s linear infinite 5s; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐡</div>
-  <div style="position: fixed; font-size: 30px; top: 40%; right: -65px; pointer-events: none; z-index: 1; animation: swimLeft2 28s linear infinite 8s; filter: drop-shadow(0 4px 8px rgba(74, 222, 128, 0.4)); transform: scaleX(-1);">🐟</div>
-  <div style="position: fixed; font-size: 24px; top: 65%; left: -55px; pointer-events: none; z-index: 1; animation: swimRight3 32s linear infinite 12s; filter: drop-shadow(0 4px 8px rgba(34, 211, 238, 0.4));">🐠</div>
-  
-   <!-- Water Splashes -->
-  <div style="position: fixed; width: 120px; height: 120px; top: 15%; left: 20%; pointer-events: none; z-index: 0; animation: splash1 8s ease-in-out infinite;">
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(34, 211, 238, 0.15) 40%, transparent 70%); animation: ripple1 3s ease-out infinite;"></div>
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(34, 211, 238, 0.1) 40%, transparent 70%); animation: ripple1 3s ease-out infinite 0.5s;"></div>
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(34, 211, 238, 0.08) 40%, transparent 70%); animation: ripple1 3s ease-out infinite 1s;"></div>
-  </div>
-  <div style="position: fixed; width: 100px; height: 100px; top: 60%; right: 25%; pointer-events: none; z-index: 0; animation: splash2 10s ease-in-out infinite 3s;">
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(74, 222, 128, 0.15) 40%, transparent 70%); animation: ripple2 3.5s ease-out infinite;"></div>
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(74, 222, 128, 0.1) 40%, transparent 70%); animation: ripple2 3.5s ease-out infinite 0.6s;"></div>
-  </div>
-  <div style="position: fixed; width: 90px; height: 90px; bottom: 25%; left: 30%; pointer-events: none; z-index: 0; animation: splash3 12s ease-in-out infinite 6s;">
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(34, 211, 238, 0.12) 40%, transparent 70%); animation: ripple3 4s ease-out infinite;"></div>
-    <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(34, 211, 238, 0.08) 40%, transparent 70%); animation: ripple3 4s ease-out infinite 0.7s;"></div>
-  </div> 
-
-   <style>
-    @keyframes floatBubble1 {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.7; }
-      33% { transform: translate(40px, -50px) scale(1.3) rotate(120deg); opacity: 0.95; }
-      66% { transform: translate(-30px, 40px) scale(0.85) rotate(240deg); opacity: 0.8; }
-    }
-    @keyframes floatBubble2 {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.65; }
-      50% { transform: translate(-50px, -40px) scale(1.25) rotate(180deg); opacity: 0.9; }
-    }
-    @keyframes floatBubble3 {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.6; }
-      40% { transform: translate(35px, -45px) scale(1.15) rotate(144deg); opacity: 0.85; }
-      80% { transform: translate(-30px, 25px) scale(0.9) rotate(288deg); opacity: 0.7; }
-    }
-    @keyframes floatBubble4 {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-      50% { transform: translate(30px, 30px) scale(1.4); opacity: 1; }
-    }
-    @keyframes floatBubble5 {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.75; }
-      50% { transform: translate(-25px, -35px) scale(1.35); opacity: 0.95; }
-    }
-    @keyframes floatBubble6 {
-      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
-      50% { transform: translate(20px, -40px) scale(1.3); opacity: 0.9; }
-    }
-    
-    /* Fish Swimming Animations */
-    @keyframes swimRight1 {
-      0% { left: -60px; top: 25%; transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-20px) rotate(5deg); }
-      50% { transform: translateY(0) rotate(0deg); }
-      75% { transform: translateY(20px) rotate(-5deg); }
-      100% { left: calc(100% + 60px); top: 25%; transform: translateY(0) rotate(0deg); }
-    }
-    
-    @keyframes swimRight2 {
-      0% { left: -70px; top: 75%; transform: translateY(0) rotate(0deg); }
-      30% { transform: translateY(-30px) rotate(8deg); }
-      60% { transform: translateY(10px) rotate(-3deg); }
-      100% { left: calc(100% + 70px); top: 75%; transform: translateY(0) rotate(0deg); }
-    }
-    
-    @keyframes swimRight3 {
-      0% { left: -55px; top: 65%; transform: translateY(0) rotate(0deg); }
-      20% { transform: translateY(15px) rotate(-6deg); }
-      50% { transform: translateY(-10px) rotate(4deg); }
-      80% { transform: translateY(5px) rotate(-2deg); }
-      100% { left: calc(100% + 55px); top: 65%; transform: translateY(0) rotate(0deg); }
-    }
-    
-    @keyframes swimLeft1 {
-      0% { right: -60px; top: 55%; transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(20px) rotate(-5deg); }
-      50% { transform: translateY(0) rotate(0deg); }
-      75% { transform: translateY(-15px) rotate(5deg); }
-      100% { right: calc(100% + 60px); top: 55%; transform: translateY(0) rotate(0deg); }
-    }
-    
-    @keyframes swimLeft2 {
-      0% { right: -65px; top: 40%; transform: translateY(0) rotate(0deg); }
-      30% { transform: translateY(25px) rotate(-7deg); }
-      70% { transform: translateY(-20px) rotate(6deg); }
-      100% { right: calc(100% + 65px); top: 40%; transform: translateY(0) rotate(0deg); }
-    }
-    
-    /* Water Splash Ripples */
-    @keyframes ripple1 {
-      0% { transform: scale(0.3); opacity: 0.8; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-    
-    @keyframes ripple2 {
-      0% { transform: scale(0.4); opacity: 0.7; }
-      100% { transform: scale(2.2); opacity: 0; }
-    }
-    
-    @keyframes ripple3 {
-      0% { transform: scale(0.35); opacity: 0.75; }
-      100% { transform: scale(2.1); opacity: 0; }
-    }
-    
-    @keyframes splash1 {
-      0%, 100% { opacity: 0; }
-      10%, 90% { opacity: 1; }
-    }
-    
-    @keyframes splash2 {
-      0%, 100% { opacity: 0; }
-      15%, 85% { opacity: 1; }
-    }
-    
-    @keyframes splash3 {
-      0%, 100% { opacity: 0; }
-      12%, 88% { opacity: 1; }
-    }
-  </style> 
-
   <header>
-    <div class="container nav" role="navigation" aria-label="Main">
+    <div class="nav-container">
       <div class="brand">
-        <!-- Replace these placeholders with your logo files -->
         <img src="static/img/Logonowords-removebg.png" alt="The Nautical Mile logo icon" />
-        <div>
-          <div style="font-weight:700; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">The Nautical Mile</div>
-          <div class="small">Ipswich Waterfront</div>
+        <div class="brand-text">
+          <h1>The Nautical Mile</h1>
+          <div>Ipswich Waterfront</div>
         </div>
       </div>
 
@@ -964,95 +460,85 @@
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#reservations">Reservations</a></li>
           <li><a href="#events">Events</a></li>
-          <li><a href="/ourstaff.html">Our Staff</a></li>
+          <li><a href="ourstaff.html">Our Staff</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- HERO -->
-    <section id="home" class="hero" aria-labelledby="hero-heading">
-      <div class="hero-left">
-        <div class="eyebrow">Anchored in Flavour</div>
-        <h2 id="hero-heading">Where the Tide Meets the Table</h2>
-        <p class="lead">
-          Step into <strong>The Nautical Mile</strong>, Ipswich’s newest waterfront dining destination.
-          Inspired by the sea and stocked with the freshest local produce, our menu and atmosphere invite you
-          to relax, explore, and celebrate beside the water.
-        </p>
-        <a class="cta" href="#reservations">Book Your Berth</a>
-      </div>
-
-      <aside class="hero-right" aria-labelledby="intro-logo">
-        
-        <div class="logo-placeholder" aria-hidden="true">
-          <!-- logo.png should be the full logo with the anchor & rope -->
-          <img src="static/img/logo.png" alt="The Nautical Mile logo (anchor and rope emblem)" />
-        </div>
-        <div class="small" style="margin-top:10px; color: rgba(255, 255, 255, 0.9);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
-      </aside>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-heading">
-      <div class="about-grid container">
-        <div class="glass-box">
-          <h3 id="about-heading">Our Voyage</h3>
-          <p>
-            The Nautical Mile was founded with one simple idea: celebrate Ipswich’s maritime roots while offering a modern,
-            welcoming dining experience by the water. From our anchor-inspired emblem to the sea-salted flavours on the plate,
-            every detail nods to the town’s proud coastal story.
+  <main>
+    <div class="container">
+      <!-- HERO -->
+      <section id="home" class="hero" aria-labelledby="hero-heading">
+        <div class="hero-left">
+          <div class="eyebrow">Anchored in Flavour</div>
+          <h2 id="hero-heading">Where the Tide Meets the Table</h2>
+          <p class="lead">
+            Step into <strong>The Nautical Mile</strong>, Ipswich's newest waterfront dining destination.
+            Inspired by the sea and stocked with the freshest local produce, our menu and atmosphere invite you
+            to relax, explore, and celebrate beside the water.
           </p>
-
-          <h4 style="margin-top:18px;">The Crew Behind the Mile</h4>
-          <p>
-            Our team — chefs, front of house, and crew — are all passionate about hospitality. We work with local suppliers
-            and fishermen across Suffolk to bring honest, seasonal dishes to your table. Whether you’re celebrating or simply
-            sharing a meal, expect relaxed service with thoughtful attention to detail.
-          </p>
+          <a class="cta" href="#reservations">Book Your Berth</a>
         </div>
 
-        <div class="glass-box">
-          <h4 style="margin-top:0;">Quick Facts</h4>
-          <ul style="margin:0; padding-left:18px;">
-            <li>Waterfront location in Ipswich harbour</li>
-            <li>Locally sourced seafood & seasonal menus</li>
-            <li>Group bookings & private events</li>
-            <li>Laid-back coastal atmosphere</li>
-          </ul>
-        </div>
-        <div class="glass-box">
-          <h4 style="margin-top:0;">DISCLAIMER</h4>
-          <ul style="margin:0; padding-left:18px;">
-            <li>This is a fictitious restaurant</li>
-            <li>This was made by a 14 year old</li>
-            <li>Made for fun learning!</li>
-            
-            
-            
-          </ul>
-        </div>
-      </div>
-    </section>
+        <aside class="hero-right">
+          <div class="logo-placeholder">
+            <img src="static/img/logo.png" alt="The Nautical Mile logo (anchor and rope emblem)" />
+          </div>
+          <div class="small" style="text-align: center; color: var(--dark-text);">Ipswich Waterfront • Fresh seafood • Warm hospitality</div>
+        </aside>
+      </section>
 
-    <!-- MENU -->
-    <section id="menu" aria-labelledby="menu-heading">
-      <div class="container">
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-heading">
+        <h3 id="about-heading">Our Voyage</h3>
+        <div class="about-grid">
+          <div class="glass-box">
+            <p>
+              The Nautical Mile was founded with one simple idea: celebrate Ipswich's maritime roots while offering a modern,
+              welcoming dining experience by the water. From our anchor-inspired emblem to the sea-salted flavours on the plate,
+              every detail nods to the town's proud coastal story.
+            </p>
+
+            <h4>The Crew Behind the Mile</h4>
+            <p>
+              Our team — chefs, front of house, and crew — are all passionate about hospitality. We work with local suppliers
+              and fishermen across Suffolk to bring honest, seasonal dishes to your table. Whether you're celebrating or simply
+              sharing a meal, expect relaxed service with thoughtful attention to detail.
+            </p>
+          </div>
+
+          <div class="glass-box">
+            <h4 style="margin-top:0;">Quick Facts</h4>
+            <ul style="margin:0; padding-left:18px;">
+              <li>Waterfront location in Ipswich harbour</li>
+              <li>Locally sourced seafood & seasonal menus</li>
+              <li>Group bookings & private events</li>
+              <li>Laid-back coastal atmosphere</li>
+            </ul>
+
+            <h4 style="margin-top:24px;">Disclaimer</h4>
+            <ul style="margin:0; padding-left:18px;">
+              <li>This is a fictitious restaurant</li>
+              <li>Created by a 14 year old</li>
+              <li>Made for fun learning!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section id="menu" aria-labelledby="menu-heading">
         <h3 id="menu-heading">Menu</h3>
-        <p class="small" style="margin-bottom:14px;">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.
-
-        </p>
+        <p class="small">Our menu is split into sections inspired by the sea — from light starters to comforting mains and seaside desserts.</p>
 
         <div class="menu-grid">
           <div class="menu-card">
             <h4>Set Sail (Starters)</h4>
             <div class="dish"><span>Harbour-Smoked Mackerel</span><strong>£8.50</strong></div>
             <div class="dish"><span>Sea-Salted Crab Croquettes</span><strong>£7.75</strong></div>
-            <div class="dish"><span>Radish & Dill Flatbread</span><strong>£6.00
-          
-            </strong></div>
+            <div class="dish"><span>Radish & Dill Flatbread</span><strong>£6.00</strong></div>
           </div>
 
           <div class="menu-card">
@@ -1064,10 +550,10 @@
 
           <div class="menu-card">
             <h4>From Dock to Dish (Seafood)</h4>
-            <div class="dish"><span>Suffolk Fisherman’s Stew</span><strong>£17.00</strong></div>
-            <div class="dish"><span>Salt Crusted Monkfish</span><strong>£200.05</strong></div>
-            <div class="dish"><span>Salted Swordfish</span><strong>£88.09</strong></div>
-          </div> 
+            <div class="dish"><span>Suffolk Fisherman's Stew</span><strong>£17.00</strong></div>
+            <div class="dish"><span>Salt Crusted Monkfish</span><strong>£20.05</strong></div>
+            <div class="dish"><span>Salted Swordfish</span><strong>£18.09</strong></div>
+          </div>
 
           <div class="menu-card">
             <h4>The Delightfully Deep (Desserts)</h4>
@@ -1077,39 +563,34 @@
           </div>
         </div>
 
-        <p class="small" style="margin-top:12px;">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
-      </div>
-    </section>
+        <p class="small" style="margin-top:32px;">Allergen info available — please ask your server. Menus change with the seasons and daily catch.</p>
+      </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" aria-labelledby="gallery-heading">
-      <div class="container">
+      <!-- GALLERY -->
+      <section id="gallery" aria-labelledby="gallery-heading">
         <h3 id="gallery-heading">Through the Porthole</h3>
         <p class="small">A glimpse of our space, the view from the deck, and the plates that define us.</p>
-        <div class="gallery" style="margin-top:12px;">
-          <!-- Replace with actual gallery images -->
+        <div class="gallery">
           <img src="static/img/Themainrestarant.jpg" alt="View from the deck at The Nautical Mile" />
           <img src="static/img/scott-greer-81yZExqt-J8-unsplash.jpg" alt="Seafood dish on a wooden table" />
           <img src="static/img/anthony-camp-0dHsuLpukGw-unsplash.jpg" alt="Interior seating with waterfront view" />
           <img src="static/img/stella-he-hM6MSq__M0Q-unsplash.jpg" alt="Evening lights along Ipswich waterfront" />
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- RESERVATIONS -->
-    <section id="reservations" aria-labelledby="reservations-heading">
-      <div class="container" style="display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:start;">
-        <div class="glass-box">
-          <h3 id="reservations-heading">Book Your Berth</h3>
-          <p class="small">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
+      <!-- RESERVATIONS -->
+      <section id="reservations" aria-labelledby="reservations-heading">
+        <h3 id="reservations-heading">Book Your Berth</h3>
+        <div class="reservations-grid">
+          <div class="glass-box">
+            <p class="small">Secure your place on deck for an unforgettable waterfront dinner. Walk-ins welcome when space allows — we recommend booking for weekends and larger groups.</p>
 
-          <h4 style="margin-top:16px;">Private Voyages & Events</h4>
-          <p class="small">
-            Looking for the ideal spot for birthdays, anniversaries, or corporate gatherings? Tell our events team the size and style of your event and we’ll chart the perfect course.
-          </p>
-        </div>
+            <h4 style="margin-top:24px;">Private Voyages & Events</h4>
+            <p class="small">
+              Looking for the ideal spot for birthdays, anniversaries, or corporate gatherings? Tell our events team the size and style of your event and we'll chart the perfect course.
+            </p>
+          </div>
 
-        <aside>
           <form class="form" aria-label="Reservation form" method="get" action="/reserve.html">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" required placeholder="Your full name" />
@@ -1138,18 +619,16 @@
 
             <button type="submit">Request Reservation</button>
 
-            <p class="small" style="margin-top:10px;">You'll receive a confirmation email once your reservation is processed. For urgent bookings, please call us. But please remember this is a fictional table as it's a fictional restaurant.</p>
+            <p class="small" style="margin-top:16px; color: var(--dark-text);">You'll receive a confirmation email once your reservation is processed. Remember: this is a fictional table at a fictional restaurant.</p>
           </form>
-        </aside>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <!-- EVENTS -->
-    <section id="events" aria-labelledby="events-heading">
-      <div class="container">
+      <!-- EVENTS -->
+      <section id="events" aria-labelledby="events-heading">
         <h3 id="events-heading">On the Horizon</h3>
         <div class="glass-box">
-          <p class="small">From live music nights to seasonal festivals, there's always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
+          <p class="small" style="color: var(--dark-text);">From live music nights to seasonal festivals, there's always something happening at The Nautical Mile. Check back for dates or sign up for our mailing list for early access to event bookings.</p>
 
           <ul style="padding-left:18px; margin-top:12px;">
             <li><strong>Friday Fun Sessions</strong> — Bounty Bingo, relaxed vibes.</li>
@@ -1157,34 +636,32 @@
             <li><strong>Seasonal Seafood Feast</strong> — For VIPs only, celebrating the catch of the day every season!</li>
           </ul>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-heading">
-      <div class="container" style="display:grid; grid-template-columns: 1fr 320px; gap:22px; align-items:start;">
-        <div class="glass-box">
-          <h3 id="contact-heading">Drop Anchor Here</h3>
-          <p class="small">
-            Find us at Ipswich Waterfront — a short walk from the station. For directions, dietary info, or event enquiries, reach out below.
-          </p>
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Drop Anchor Here</h3>
+        <div class="reservations-grid">
+          <div class="glass-box">
+            <p class="small" style="color: var(--dark-text);">
+              Find us at Ipswich Waterfront — a short walk from the station. For directions, dietary info, or event enquiries, reach out below.
+            </p>
 
-          <p style="margin-top:12px;">
-            <strong>Address:</strong><br />
-            The Nautical Mile<br />
-            Ipswich Waterfront<br />
-            Ipswich, Suffolk
-          </p>
+            <p class="contact-info" style="margin-top:24px;">
+              <strong>Address:</strong><br />
+              The Nautical Mile<br />
+              Ipswich Waterfront<br />
+              Ipswich, Suffolk
+            </p>
 
-          <p>
-            <strong>Phone:</strong> <a href="tel:+441234567890" style="color: rgba(255, 255, 255, 0.95);">+44 1234 567 890</a><br />
-            <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk" style="color: rgba(255, 255, 255, 0.95);">hello@thenauticalmile.co.uk</a>
-          </p>
-        </div>
+            <p class="contact-info">
+              <strong>Phone:</strong> <a href="tel:+441234567890">+44 1234 567 890</a><br />
+              <strong>Email:</strong> <a href="mailto:hello@thenauticalmile.co.uk">hello@thenauticalmile.co.uk</a>
+            </p>
+          </div>
 
-        <aside class="form">
-          <h4 style="margin-top:0; color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">Send a Message in a Bottle</h4>
-          <form method="post" action="/contact">
+          <form class="form" method="post" action="/contact">
+            <h4 style="margin-top:0;">Send a Message in a Bottle</h4>
             <label for="c-name">Name</label>
             <input id="c-name" name="name" type="text" required />
             <label for="c-email">Email</label>
@@ -1193,28 +670,15 @@
             <textarea id="c-message" name="message" rows="5" required></textarea>
             <button type="submit">Send Message</button>
           </form>
-        </aside>
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
-      <div style="display:flex; gap:12px; align-items:center;">
-        <img src="static/img/Logonowords.png" alt="logo icon" style="height:34px;" />
-        <div>
-          <div style="font-weight:700;">The Nautical Mile</div>
-          <div class="small">Anchored in Flavour • Ipswich Waterfront</div>
-        </div>
-      </div>
-
-      <div class="small">© <span id="year"></span> The Nautical Mile — All rights reserved.</div>
+    <div class="container">
+      <p style="color: var(--cream); font-size: 14px;">&copy; 2026 The Nautical Mile. All rights reserved. | Ipswich Waterfront</p>
     </div>
   </footer>
-
-  <script>
-    // footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
